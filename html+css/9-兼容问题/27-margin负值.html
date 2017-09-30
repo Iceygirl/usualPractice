@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>margin负值</title>
+		<style>
+			body{margin:0;}
+			.box{float:left;border:10px solid black;margin:20px;display:inline;}
+			.box div{width:100px;height:100px;background:red;position:relative;}
+			.div1{margin-top:-30px;}
+			.div2{margin-bottom:-30px;}
+			.div3{margin-left:-30px;}
+			.div4{margin-right:-30px;}
+			/*
+			ie6下，超出边框的部分消失
+			解决办法：加上相对定位
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="div1">1</div>
+		</div>
+		<div class="box">
+			<div class="div2">2</div>
+		</div>
+		<div class="box">
+			<div class="div3">3</div>
+		</div>
+		<div class="box">
+			<div class="div4">4</div>
+		</div>
+	</body>
+</html>

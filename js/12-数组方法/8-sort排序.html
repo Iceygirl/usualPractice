@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script>
+
+var arr = [ 'c', 'd', 'a', 'e' ];
+arr.sort();
+alert( arr );
+
+var arr2 = [ 4,3,5,5,76,2,0,8 ];
+arr2.sort();
+alert( arr2 );
+
+
+arr2.sort(function ( a, b ) {
+	return a - b;
+});
+alert( arr2 );
+
+var arrWidth = [ '345px', '23px', '10px', '1000px' ];
+
+arrWidth.sort(function ( a, b ) {
+	return parseInt(a) - parseInt(b);
+});
+
+alert( arrWidth );
+
+/*
+	1.sort()比较时会将数组中的内容看成字符，之后再进行比较
+	2.sort(function (a,b){
+		return a-b;  从小到大排列
+		return b-a;  从大到小排列
+	});
+	  内置的比较函数：将数组中的任意两项礽给a,b，
+	               当a>b.返回正数，将两个数进行交换
+				   当a<b,返回负数，不进行任何操作
+				   
+*/
+
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

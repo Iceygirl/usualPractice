@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>绝对定位</title>
+		<style>
+			body{margin:0;}
+			.div1{background:red;position:absolute;}
+			.div2{width:200px;height:200px;background:blue;}
+			.div3{width:200px;height:200px;background:green;position:relative;}
+			.div4{width:100px;height:100px;background:pink;}
+			.div5{width:50px;height:50px;background:orange;position:absolute;right:0;bottom:0;}
+			.span{background:purple;width:100px;height:100px;position:absolute;}
+			
+			/*
+			
+			position:absolute ---绝对定位
+			1.使元素脱离文档流
+			2.使内嵌元素支持宽高
+			3.使块元素宽度由内容撑开
+			4.如果有定位父级相对于定位父级发生偏移，如果没有定位父级相对于整个文档进行偏移
+			5.相对定位元素一般是配合绝对定位元素使用
+			
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="div1">div1</div>
+		<div class="div2">div2</div>
+		<div class="div3">
+			<div class="div4">
+				<div class="div5"></div>
+			</div>
+		</div>
+		<span class="span">span1</span>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ img { width:300px; height:300px;}
+</style>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input');
+	var oImg = document.getElementsByTagName('img'); 
+	var timer = null;
+	var arr = ['1.jpg','2.jpg','3.jpg','4.jpg'];
+	var num = 0;
+	
+	aInp[0].onclick = function (){
+		clearInterval(timer);
+		timer = setInterval(function (){
+			//oImg.src = 'img/'+arr[num%arr.length];这个没有成功，不知道为什么
+			document.body.background = 'img/'+arr[num%arr.length];
+			num++;
+		},1000);
+	}
+	
+	aInp[1].onclick = function (){
+		clearInterval(timer);
+	};
+ };
+</script>
+</head>
+
+<body>
+<input type="button" value="点击更换图片" />
+<input type="button" value="停止" /><br/><br />
+<!--<img src="img/1.jpg" alt="loading..." />-->
+</body>
+</html>

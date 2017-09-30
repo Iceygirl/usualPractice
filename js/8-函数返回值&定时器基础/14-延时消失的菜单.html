@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,ul { margin:0; padding:0;}
+ li { list-style:none;}
+ a { text-decoration:none; color:#fff; display:block;}
+
+ #menu { width:320px; height:30px; background:#666; margin-top:50px; margin-left:50px;}
+ #menu li { width:80px; height:30px; float:left; text-align:center; line-height:30px; }
+ .subMenu { height:20px; background:#999; position:absolute; top:90px; left:0; display:none;}
+ .subMenu1 { width:243px;}
+ .subMenu2 { width:162px;}
+ .subMenu3 { width:81px;}
+ .subMenu li { width:80px; height:20px; text-indent:10px;  border-right:1px solid #fff; line-height:20px; font-size:14px; float:left;}
+</style>
+<script>
+ window.onload = function (){
+	var aUl = document.getElementsByTagName('ul');
+	var oUl = document.getElementById('menu');
+	var aLi = oUl.getElementsByTagName('li');
+	var that = 0;
+	var timer = null;
+	
+	for(var i=1;i<aUl.length-1;i++){
+		aUl[i].style.left =	20 +(i-1)*80+'px';
+	}
+	aUl[4].style.left = '300px';
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index = i+1;
+		
+		aLi[i].onmouseover = function (){
+			clearTimeout(timer);
+			for(var i=0;i<aLi.length;i++){
+				aUl[i+1].style.display = 'none';	
+			}
+			aUl[this.index].style.display = 'block';
+		};
+		
+		aLi[i].onmouseout = function (){
+			that = this.index;
+			timer = setTimeout(function (){
+				aUl[that].style.display = 'none';
+			},200);
+		};
+	}
+	
+	for(var i=1;i<aUl.length;i++){
+		aUl[i].onmouseover = function (){
+			clearTimeout(timer);
+			this.style.display = 'block';
+		};
+		
+		aUl[i].onmouseout = function (){
+			that = this;
+			timer = setTimeout(function (){
+				that.style.display = 'none';
+			},200);
+		};
+	}
+ };
+</script>
+</head>
+
+<body>
+<ul id="menu">
+	<li><a href="#">首页</a></li>
+	<li><a href="#">关于我们</a></li>
+	<li><a href="#">作品</a></li>
+	<li><a href="#">博客</a></li>
+</ul>
+<ul class="subMenu subMenu1">
+   <li><a href="#">SY1</a></li>
+   <li><a href="#">SY2</a></li>
+   <li><a href="#">SY3</a></li>
+</ul>
+<ul class="subMenu subMenu2">
+   <li><a href="#">GY1</a></li>
+   <li><a href="#">GY2</a></li>
+</ul>
+<ul class="subMenu subMenu1">
+   <li><a href="#">ZP1</a></li>
+   <li><a href="#">ZP2</a></li>
+   <li><a href="#">ZP3</a></li>
+</ul>
+<ul class="subMenu subMenu3">
+   <li><a href="#">BK1</a></li>
+</ul>
+</body>
+</html>

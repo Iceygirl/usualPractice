@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,h2 { margin:0; padding:0;}
+ 
+ .grade { width:520px; height:60px; margin:50px; position:relative; border:1px solid #000;}
+ .grade .start { position:absolute; top:15px; left:10px; color:#F93; font-size:30px;}
+ .grade h2 { position:absolute; top:15px; left:26px; color:#;}
+ .grade .stars { width:110px; position:absolute; top:20px; left:150px;}
+ .grade a { width:22px; height:22px; display:block; float:left; background:url(img5/stars.png) no-repeat; }
+ .grade .hover { background:url(img5/stars.png) no-repeat 0 -22px;}
+ .grade .hover1 { background:url(img5/stars.png) no-repeat 0 -44px;}
+ .grade .text { line-height:60px; text-align:center; position:absolute; top:0; left:270px; color:#F93;}
+ .grade .tip { width:241px; height:40px; background:url(img5/notice.png) no-repeat; position:absolute; top:16px; left:270px;}
+</style>
+<script>
+ window.onload = function (){
+	var arr = ['较差','一般','还行','推荐','力荐'];
+	var oGrade = document.getElementsByTagName('div')[0];
+	var oStar = oGrade.getElementsByTagName('div')[0];
+	var oTip = oGrade.getElementsByTagName('div')[1];
+	var oText = oGrade.getElementsByTagName('span')[1];
+	var aA = oStar.getElementsByTagName('a');
+	
+	oStar.onmouseover = function (){
+		oTip.style.display = 'none';
+	};
+	
+	
+	for(var i=0;i<aA.length;i++){
+		aA[i].index = i;
+		
+		if(i<2){
+			aA[i].onclick = aA[i].onmouseover = function (){
+				for(var i = 0;i<aA.length;i++){
+					aA[i].className ='';
+				}
+				
+				for(var i=0;i<this.index;i++){
+					aA[i].className = 'hover';
+				}
+				
+				oText.innerHTML = arr[this.index];
+				this.className = 'hover';
+			};
+		} else {
+			aA[i].onclick = aA[i].onmouseover = function (){
+				for(var i = 0;i<aA.length;i++){
+					aA[i].className ='';
+				}
+				
+				for(var i=0;i<this.index;i++){
+					if(i<2){
+						aA[i].className = 'hover';	
+					} else {
+						aA[i].className = 'hover1';
+					}
+				}
+				
+				oText.innerHTML = arr[this.index];
+				this.className = 'hover1';
+			};
+		}
+	}
+ };
+</script>
+</head>
+
+<body>
+<div class="grade">
+	<span class="start">*</span>
+    <h2>总体评价:</h2>
+    <div class="stars">
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+    </div>
+    <span class="text"></span>
+    <div class="tip"></div>
+</div>
+</body>
+</html>

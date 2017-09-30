@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+.box{width:100px;height:100px;padding:100px;border:5px solid #000;margin:30px auto; -webkit-transform-style:preserve-3d;-webkit-perspective:100px;}
+.div{width:100px;height:100px;background:Red; transition:1s;}
+/*.box:hover .div{-webkit-transform:rotateX(180deg);}*/
+/*.box:hover .div{-webkit-transform:rotateY(180deg);}
+.box:hover .div{-webkit-transform:rotateZ(180deg);}*/
+.box:hover .div{-webkit-transform:translateZ(-100px);}
+
+/*
+1.transform-style（preserve-3d） 建立3D空间
+	Perspective 景深
+	Perspective- origin 景深基点
+2.Transform 新增函数
+	rotateX()
+	rotateY()
+	rotateZ()
+	translateZ()
+	scaleZ()*/
+</style>
+</head>
+<body>
+<div class="box">
+	<div class="div">111</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>ie6,7下li的间隙问题</title>
+		<style>
+			.body
+			{
+				margin:0;
+			}
+			ul
+			{
+				margin:0;
+				padding:0;
+				list-style:none;
+			}
+			a
+			{
+				text-decoration:none;
+				float:left;
+			}
+			.list
+			{
+				width:300px;
+			}
+			.list li
+			{
+				height:30px;
+				border:1px solid black;
+				font-size:12px;
+				line-height:30px;
+				vertical-align:top;
+			}
+			span{
+				float:right;
+			}
+			
+		
+				/*ie6,7下li几个px的间隙问题：
+				在ie6,7li本身没有浮动，但是内容浮动了li会多出来几个px
+				
+				解决办法：
+				1.给li加浮动；
+				2.给li加vertical-align:top;*/
+		</style>
+	</head>
+	<body>
+		<ul class="list">
+			<li>
+				<a href="#">文字文字文字文字文字文字文字文字</a>
+				<span>作者</span>
+			</li>
+			<li>
+				<a href="#">文字文字文字文字文字文字文字文字</a>
+				<span>作者</span>
+			</li>
+			<li>
+				<a href="#">文字文字文字文字文字文字文字文字</a>
+				<span>作者</span>
+			</li>
+			<li>
+				<a href="#">文字文字文字文字文字文字文字文字</a>
+				<span>作者</span>
+			</li>
+		</ul>
+	</body>
+</html>

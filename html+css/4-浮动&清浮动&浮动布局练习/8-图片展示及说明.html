@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ body,ul,p { margin:0; padding:0;}
+ li { list-style:none;}
+ a { text-decoration:none;}
+ 
+ #pics { width:200px; height:250px; border:1px solid #ccc; margin:30px auto;}
+  p { width:190px; height:160px; padding:5px; font-size:14px; line-height:20px; display:none;}
+  p a { display:inline-block; width:100px; height:132px; padding:2px; border:1px solid #ccc; float:left;}
+  
+ .list { width:200px; height:80px;}
+ .list li { float:left;}
+ .list a { display:block; width:60px; height:70px; padding:2px; border:1px solid #ccc;}
+ .list img { width:60px; height:70px;}
+ a:hover { border-color:#F36;}
+</style>
+<script>
+ window.onload = function (){
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	var aP = document.getElementsByTagName('p');
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index = i;
+		
+		aLi[i].onmouseover = function (){
+			for(var i=0;i<aLi.length;i++){
+				aP[i].style.display = 'none';	
+				
+			}
+			aP[this.index].style.display = 'block';	
+		}
+	}
+ };
+</script>
+</head>
+
+<body>
+<div id="pics">
+	<p style="display:block"><a href="#"><img src="img/1.jpg"/></a>1111文字文字文字文字文字文文字文字文文字文字文文字文字文文字文字文文字文字文文字文字文文字文文字文文字文字</p>
+    <p><a href="#"><img src="img/2.jpg"/></a>22222文字文字文字文字文字文文字文字文文字文字文文字文字文文字文字文文文字文字文文字文文字文文字文字文文字</p>
+    <p><a href="#"><img src="img/3.jpg"/></a>33333文字文字文字文字文字文文字文字文文字文字文文字文字文文字文字文文字文字文文字文文字文文字文字文文字</p>
+    <ul class="list">
+    	<li><a href="#"><img src="img/1.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="img/2.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="img/3.jpg" alt=""/></a></li>
+    </ul>
+</div>
+
+    
+
+</body>
+</html>

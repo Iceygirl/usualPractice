@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ div { width:100px; height:20px; background:#FC0;}
+</style>
+<script>
+ window.onload = function (){
+	var oDiv = document.getElementsByTagName('div')[0];
+	
+	oDiv.onmouseover = function (){
+		startMove(oDiv,200);
+	};
+	
+	oDiv.onmouseout = function (){
+		startMove(oDiv,20);
+	};
+ };
+ var iSpeed =0;
+ var iHeight=20;
+ function startMove(obj,iTarget){
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function (){
+		 iSpeed += (iTarget-iHeight)/5;
+		 iSpeed *= 0.7;
+		 
+		 if(Math.abs(iSpeed)<1 && Math.abs(iTarget-iHeight)<1){
+			clearInterval(obj.timer);
+			obj.style.height = iTarget+'px'; 
+		 } else{
+			iHeight += iSpeed;
+			 if(iHeight<0){
+				iHeight =0; 
+			 }
+			obj.style.height = iHeight+'px'; 
+		 }
+	},30); 
+ };
+ 
+ //当把高度改变为20px则会有高度变为负数会有bug
+</script>
+</head>
+
+<body>
+<div></div>
+</body>
+</html>

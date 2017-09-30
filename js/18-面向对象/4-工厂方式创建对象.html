@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+//工厂方式创建对象
+function createPerson (name,sex){  		//构造函数
+	
+	//1.原料
+	var obj = new Object();
+	
+	//2.加工
+	obj.name = name;
+	obj.sex = sex;
+	
+	obj.showName = function (){
+		alert(this.name);
+	}
+	obj.showSex = function (){
+		alert(this.sex);
+	}
+	
+	//3.出厂
+	return obj;
+}	
+
+var p1 = createPerson('zmx','女');
+var p2 = createPerson('zxe','女');
+p1.showName();
+p1.showSex();
+p2.showName();
+p2.showSex();
+
+/*工厂方式创建对象的问题：
+1.没有new
+2.每个对象都有自己的一套方法，浪费资源
+alert(p1.showName == p2.showName);  //false
+怎么理解? 匿名函数的话相当于创建了一个新的函数
+p1.showName = new Function('alert(name)');
+p2.showName = new Function('alert(name)');*/
+</script>
+</head>
+<body>
+</body>
+</html>

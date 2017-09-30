@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	//$('span').siblings().css('background','blue'); 
+	//$('span').siblings('em').css('background','blue');
+	
+	//$('span').nextAll().css('background','red');
+	//$('span').nextAll('p').css('background','yellow');
+	
+	//$('span').prevAll().css('background','yellow');
+	//$('strong').prevAll('span').css('background','red');
+	
+	$('span').nextUntil('em').css('background','blue');
+ });
+ 
+/*
+siblings() : 找所有的兄弟节点，参数也是筛选功能
+
+nextAll() : 下面所有的兄弟节点，参数也是筛选功能
+
+prevAll() : 上面所有的兄弟节点
+
+Until() : 截止
+*/
+</script>
+</head>
+
+<body>
+<div>1</div>
+<span>2</span>
+<strong>3</strong>
+<p>4</p>
+<em>5</em>
+<h2>6</h2>
+</body>
+</html>

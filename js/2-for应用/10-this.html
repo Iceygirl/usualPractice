@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<input id="btn1" type="button" value="按钮" />
+<input id="btn2" type="button" onclick="fn1();" value="按钮2" />
+
+<script>
+function fn1(){
+	alert(this);
+};
+var oBtn1 = document.getElementById('btn1');
+var oBtn2 = document.getElementById('btn2');
+oBtn1.onclick = fn1;
+oBtn2.onclick = function (){
+	fn1();
+};
+/*
+ this： 指的是调用 当前 方法（函数）的那个对象
+ 总结：
+ 	 1.fn1();			this => window
+	 2.oDiv.onclick = fn1;			this => oDiv
+	 3.oDiv.onclick = function (){
+			fn1();					fn1() 里的this => window
+		};
+	 4.<div onclick="fn1();"></div>     fn1(); 里的 this 指的是 window
+*/
+</script>
+
+</body>
+</html>

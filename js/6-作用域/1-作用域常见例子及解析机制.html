@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script>
+
+//alert(a);					
+//var a = 1;				//undefined
+//alert(a);	
+
+//alert(a);
+//a=1;						//报错
+
+
+/*				
+function a (){ alert(2); }
+alert(a);					// function a (){ alert(4); }
+var a = 3;		
+alert(a);					// 3
+function a (){ alert(4); }
+alert(a);					// 3
+
+alert( typeof a );			//number
+a();									// 报错
+*/
+
+
+
+/*
+var a = 1;
+function fn1(){
+	alert(a);						// undefined
+	var a = 2;
+}
+fn1();
+alert(a);							// 1
+*/
+
+
+
+/*
+var a = 1;
+function fn1(){
+	alert(a);						// 1
+	a = 2;
+}
+fn1();
+alert(a);							// 2
+*/
+
+
+
+/*
+var a = 1;
+function fn1(a){
+	alert(a);						// undefined
+	a = 2;
+}
+fn1();
+alert(a);							// 1
+
+*/
+
+
+
+/*
+var a = 1;
+function fn1(a){
+	alert(a);						// 1
+	a = 2;
+}
+fn1(a);
+alert(a);							// 1
+*/
+
+
+/*
+ 1.作用域：
+ 	域：空间、范围、区域……
+ 	作用：读、写
+
+ 2.作用域的范围：script，全局变量、全局函数：自上而下
+	作用域链：函数：由里到外
+			{}
+
+ 3.浏览器中的“JS解析器”解析机制：
+			1）JS 的预解析：var  function 参数
+				A.所有的变量，在正式运行代码之前，都提前赋了一个值：未定义
+				B.所有的函数，在正式运行代码之前，都是整个函数块
+				C.遇到重名的：只留一个；当变量和函数重名了，就只留下函数
+				eg: a = undefined：
+					fn1 = function fn1(){ alert(2); }：
+									
+			2）逐行解读代码：
+				表达式有：= + - * / % ++ -- ! 参数……
+				表达式可以修改预解析的值！
+				函数调用之后会生成一个新的函数域，又会进行预解析和逐行解读代码
+			*/
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

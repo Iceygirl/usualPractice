@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ #div { width:50px; height:50px; background:#63F; position:absolute; top:50px; left:0;}
+</style>
+<script>
+ window.onload = function (){
+	var oBtn = document.getElementsByTagName('input')[0];
+	var oDiv = document.getElementById('div');
+	
+	oBtn.onclick = function (){
+		startMove(300);
+	};
+	
+	var timer=null;
+	function startMove(iTarget){
+	   
+	   clearInterval(timer);
+	   timer = setInterval(function (){
+		   var iSpeed = (iTarget-oDiv.offsetLeft)/8;
+		   iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+		   
+		   /*if(oDiv.offsetLeft<iTarget){
+			  iSpeed = 10;   
+		   } else{
+			  iSpeed = -10;   
+		   }*/
+		   
+		   if(oDiv.offsetLeft>=iTarget){
+			  clearInterval(timer);   
+		   } else{
+			  oDiv.style.left = oDiv.offsetLeft+iSpeed+'px';   
+		   }
+	   },30);	
+	};
+ };
+</script>
+</head>
+
+<body>
+<div id="div"></div>
+<input type="button" value="开始运动" />
+<span style="width:1px; height:300px; background:black; position:absolute; left:300px; top:0;"></span>
+</body>
+</html>

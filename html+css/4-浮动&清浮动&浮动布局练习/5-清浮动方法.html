@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>清浮动</title>
+		<style>
+			.father
+			{
+				width:120px;
+				margin:0 auto;
+				border:5px solid black;
+				overflow:auto;
+				zoom:1;
+				
+			}
+			.son
+			{
+				width:90px;
+				height:90px;
+				background:red;
+				float:left;
+			}
+			
+			
+			/*父级没有高度，子级有高度，子级会默认撑开父级的高度
+				如果子级加了浮动，则父级包不住子级
+				
+			**清浮动的方法：
+			1.给父级加与子级同样的高度；height:90px;
+			2.给父级也加浮动效果
+				这样会比较麻烦，页面中所有对应的父级都要加浮动效果，margin左右自动已无效果
+			3.给父级加display:inline-block
+				此时，margin左右居中已无效果
+			4.在浮动元素下添加空标签
+				<div class="clear"></div>
+				样式为.clear
+					{
+						clear:both;
+						height:0px;
+						font-size:0px;
+						在ie6下高度小于19px的元素，高度会被当做19px才处理
+						解决的方法：font-size:0px;
+					}
+			5.在浮动元素下添加br标签： <br clear="all"/> 
+				不符合工作中说的结构，样式，行为分开的要求，因为float这条样式需要在结构中加br标签
+			6.after伪类：(现在的主流方法) 本来在ie6,7不兼容
+			  after:在元素内部末尾加内容
+				<div class="father clear">
+					.clear
+				{
+					zoom:1;
+				}
+					.clear:after
+				{
+					content:"";
+					display:block;
+					clear:both;
+				}
+				**在ie6,7浮动元素的父级有宽度的话就不用清浮动
+			7.给父级加样式overflow：auto;(ie6不兼容) zoom:1;	
+		</style>
+	</head>
+	<body>
+		<div class="father clear">
+			<div class="son"></div>
+			
+		</div>
+	</body>
+</html>

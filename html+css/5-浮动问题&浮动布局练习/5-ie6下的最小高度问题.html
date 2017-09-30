@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>ie6下的最小高度问题</title>
+		<style>
+			.box
+			{
+				width:200px;
+				height:1px;
+				background:black;
+			}
+			
+			/*
+			在ie6下，元素的高度小于19px,都会被当做19px来处理
+			
+			解决的方法：
+			1.font-size:0;还是会有局限，最小只能是2px;
+			2.overflow:hidden;把超出的高度挤掉
+		</style>
+	</head>
+	<body>
+		<div class="box">
+		
+		</div>
+	</body>
+</html>

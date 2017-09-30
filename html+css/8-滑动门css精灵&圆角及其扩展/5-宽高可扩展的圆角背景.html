@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>宽高可扩展的圆角</title>
+		<style>
+			.box{width:300px;margin:30px auto;}
+			.head{background:url(img2/head.png) repeat-x;}
+			.headL{background:url(img2/headL.png) no-repeat;}
+			.headR{background:url(img2/headR.png) no-repeat right 0;height:8px;overflow:hidden;}
+			.foot{background:url(img2/foot.png) repeat-x;}
+			.footL{background:url(img2/footL.png) no-repeat;}
+			.footR{background:url(img2/footR.png) no-repeat right 0;height:8px;overflow:hidden;}
+			.body{border-left:1px solid grey;border-right:1px solid grey;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="head">
+				<div class="headL">
+					<div class="headR"></div>
+				</div>
+			</div>
+			<div class="body">
+			内容内容内容内容内容<br/>
+			内容内容内容内容内容<br/>
+			内容内容内容内容内容<br/>
+			内容内容内容内容内容<br/>
+			内容内容内容内容内容<br/>
+			内容内容内容内容内容<br/>
+			内容内容内容内容内容<br/>
+			内容内容内容内容内容<br/>
+			</div>
+			<div class="foot">
+				<div class="footL">
+					<div class="footR"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

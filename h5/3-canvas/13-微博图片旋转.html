@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input');
+	var oImg = document.getElementsByTagName('img')[0];
+	var iNow = 0;
+	
+	var yImg = new Image();
+	yImg.onload = function (){
+		draw(oImg);
+	};
+	yImg.src = oImg.src;
+	
+	function draw(obj){
+		var oC = document.createElement('canvas');
+		var oGC = oC.getContext('2d');
+		
+		oC.width = oImg.width;
+		oC.height = oImg.height;
+		
+		obj.parentNode.replaceChild(oC,obj);
+		
+		oGC.drawImage(obj,0,0);
+		
+		aInp[0].onclick = function (){
+			if(iNow == 3){
+				iNow = 0;
+			} else {
+				iNow++;	
+			}
+			toChange();
+		};
+		
+		aInp[1].onclick = function (){
+			if(iNow == 0){
+				iNow = 3;
+			} else {
+				iNow --;	
+			}
+			toChange();
+		};
+		
+		function toChange(){
+			switch(iNow){
+				case 1:
+					oC.width = obj.height;
+					oC.height = obj.width;
+					oGC.rotate(90*Math.PI/180);
+					oGC.drawImage(obj,0,-obj.height);
+				break;	
+				
+				case 2:
+					oC.width = obj.width;
+					oC.height = obj.height;
+					oGC.rotate(180*Math.PI/180);
+					oGC.drawImage(obj,-obj.width,-obj.height);
+				break;
+				
+				case 3:
+					oC.width = obj.height;
+					oC.height = obj.width;
+					oGC.rotate(270*Math.PI/180);
+					oGC.drawImage(obj,-obj.width,0);
+				break;
+				
+				case 0:
+					oC.width = obj.width;
+					oC.height = obj.height;
+					oGC.rotate(0);
+					oGC.drawImage(obj,0,0);
+				break;
+			}
+		};
+	};
+ };
+</script>
+</head>
+
+<body>
+<input type="button" value="顺时针旋转" />
+<input type="button" value="逆时针旋转" />
+<div>
+	<img src="img.jpg" />
+</div>
+</body>
+</html>

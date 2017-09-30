@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	//$('div').find('h2').css('background','red');
+	//$('div').find('h2').eq(1).css('background','blue');
+	
+	alert($('#h').index()); //索引就是当前元素在兄弟节点中的位置
+ });
+</script>
+</head>
+
+<body>
+<div>
+	<h2>1</h2>
+	<h3>q</h3>
+	<h2 id="h">aa</h2>
+	<h3>ff</h3>
+	<h2>gfg</h2>
+</div>
+<h2>aaa</h2>
+</body>
+</html>

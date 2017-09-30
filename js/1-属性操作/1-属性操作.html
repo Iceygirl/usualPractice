@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input'); 
+	var oBtn = aInp[1];
+	var oText = aInp[0];
+	var oSelect = document.getElementsByTagName('select')[0];
+	var oShow = aInp[2];
+	var oP = document.getElementsByTagName('p')[0];
+	
+	oBtn.onclick = function (){
+		alert(oText.value+'在'+oSelect.value);  //读操作
+	};
+	
+	oShow.onclick = function (){
+		oP.innerHTML = oText.value;			//写操作
+	};
+ };
+</script>
+</head>
+
+<body>
+<input type="text" />
+<select>
+  <option>汕头</option>
+  <option>深圳</option>
+  <option>广州</option>
+</select>
+<input type="button" value="确定" />
+<input type = 'button' value="点我，我可以将文本框的内容在下面显示哦" />
+<p></p>
+
+</body>
+</html>

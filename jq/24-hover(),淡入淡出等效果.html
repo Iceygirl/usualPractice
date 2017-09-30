@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ #div1 { width:100px; height:100px; background:#CC3;}
+ #div2 { width:100px; height:100px; background:#F03; margin-top:10px;}
+</style>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	$('#div1').hover(function (){   
+		//$(this).css('background','blue');
+		//$('#div2').hide(2000);
+		
+		//$('#div2').fadeOut(2000);    //淡出
+		//$('#div2').slideUp(2000);      //向上卷起
+		
+		$('#div2').fadeTo(1000,0.5);     //透明度改变
+	},function (){
+		//$(this).css('background','#CC3');
+		//$('#div2').show(2000);
+		
+		//$('#div2').fadeIn(2000);	//淡入
+		//$('#div2').slideDown(2000); //向下展开
+		
+		$('#div2').fadeTo(1000,1);
+	}); 
+ });
+ 
+ //hover包括鼠标移入和鼠标移出事件
+</script>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+</body>
+</html>

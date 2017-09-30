@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ #div1 { width:50px; height:50px; background:#66F; position:absolute; top:50px; left:0;}
+</style>
+<script>
+ window.onload = function (){
+	var oBtn = document.getElementById('btn');
+	var oDiv = document.getElementById('div1');
+	
+	oBtn.onclick = function (){
+		startMove();
+	};
+ };
+ 
+ function startMove(){
+	var oDiv = document.getElementById('div1');
+	var timer = null;
+	
+	clearInterval(timer);
+    timer = setInterval(function (){
+		var iSpeed =7;
+		if(oDiv.offsetLeft>=300){  //是否到达终点
+		   clearInterval(timer);	//到达终点
+		} else {
+		   oDiv.style.left = oDiv.offsetLeft+iSpeed+'px';  //到达之前
+		}
+	},30); 
+ };
+ 
+ /*1.startMove()
+ 2.运动需要停止,清除定时器
+ 3.速度可能存在不是被300整除的数
+ */
+ 
+</script>
+</head>
+
+<body>
+<input id="btn" type="button" value="开始运动" />
+<div id="div1" ></div>
+</body>
+</html>

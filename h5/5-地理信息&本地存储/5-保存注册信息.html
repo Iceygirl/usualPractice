@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input');
+	var oT = document.getElementById('oT');
+	
+	if(window.localStorage.getItem('name')){
+		aInp[0].value = window.localStorage.getItem('name');
+	};
+	
+	if(window.localStorage.getItem('sex')){
+		for(var i=1;i<aInp.length;i++){
+			if(window.localStorage.getItem('sex') == aInp[i].value){
+				aInp[i].checked = true;	
+			}
+		}
+	}
+	
+	if(window.localStorage.getItem('text')){
+		oT.value = window.localStorage.getItem('text');
+	}
+	
+	window.onunload = function (){
+		if(aInp[0].value){
+			window.localStorage.setItem('name',aInp[0].value);
+		}
+		
+		for(var i=1;i<aInp.length;i++){
+			if(aInp[i].checked){
+				window.localStorage.setItem('sex',aInp[i].value);	
+			}
+		}
+		
+		if(oT.value){
+			window.localStorage.setItem('text',oT.value);	
+		}
+	};
+	
+	 
+ };
+ 
+ //window.onunload:用户退出页面会发生的事件
+</script>
+</head>
+
+<body>
+用户名：<input type="text" /><br/>
+性别:<input type="radio" value="男" name="sex" />男
+	<input type="radio" value="女" name="sex" />女<br/>
+内容:<textarea id="oT"></textarea>
+</body>
+</html>

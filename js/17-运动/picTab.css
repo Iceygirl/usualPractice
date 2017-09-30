@@ -1,0 +1,28 @@
+
+body,ul { margin:0; padding:0;}
+li { list-style:none;}
+a { text-decoration:none;}
+img { border:none;}
+
+body { background:#666;}
+#picPlay { width:400px; height:430px; background:#999; margin:50px auto 0; font:14px Arial;}
+
+.bigPic { width:400px; height:320px; border-bottom:1px solid #fff; position:relative;}
+.bigPic .prev, .bigPic .next { width:60px; height:60px; position:absolute; top:130px; filter:alpha(opacity=0;); opacity:0; z-index:3001;}
+.bigPic .prev{ left:10px; background:url(images/btn.gif) no-repeat;}
+.bigPic .next{ right:10px; background:url(images/btn.gif) no-repeat 0 -60px; }
+.bigPic .markLeft, .bigPic .markRight{ width:200px; height:320px; position:absolute; top:0; filter:alpha(opacity:0); opacity:0; z-index:3000;}
+.bigPic .markLeft{ left:0; background:red;}
+.bigPic .markRight{ left:200px; background:green;}
+
+.bigPic .text, .bigPic .length{ position:absolute; top:298px; color:#FCC; z-index:3000;}
+.bigPic .text{ left:20px;}
+.bigPic .length{ right:20px;}
+.bigPic .bg{ width:400px; height:25px; background:#000; filter:alpha(opacity:50); opacity:0.5; position:absolute; bottom:0; left:0; z-index:2999;}
+.bigPic ul{ width:400px; height:320px; overflow:hidden; position:relative;}
+.bigPic ul li{ width:400px; height:320px; float:left; position:absolute; top:0; left:0; z-index:0; overflow:hidden; background:url(images/loading.gif) no-repeat center center;}
+
+.smallPic { width:390px; height:94px; position:relative; overflow:hidden; top:7px; left:10px;}
+.smallPic ul { width:780px; height:94px; position:absolute; top:0; left:0;}
+.smallPic ul li { width:120px; height:94px; padding-right:10px; float:left; cursor:pointer; filter:alpha(opacity=30); opacity:0.3; background:url(images/loading.gif) no-repeat center center; }
+.smallPic img { width:120px; height:94px;}

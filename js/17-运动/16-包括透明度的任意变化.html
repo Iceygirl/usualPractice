@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ div { width:60px; height:60px; background:#F90; position:absolute; left:10px; filter:alpha(opacity=30); opacity:0.3; color:black;}
+</style>
+<script src="zmx.js"></script>
+<script>
+ window.onload = function (){
+	var aDiv = document.getElementsByTagName('div');
+	for(var i=0;i<aDiv.length;i++){
+	   aDiv[i].style.top =20+i*80+'px';	
+	}
+	aDiv[0].onclick = function (){
+		startMove(this,'left',400);
+	};
+	
+	/*aDiv[0].onmouseout = function (){
+		startMove(this,'left',10);
+	};*/
+	
+	aDiv[1].onmouseover = function (){
+		startMove(this,'width',200);
+	};
+	
+	aDiv[1].onmouseout = function (){
+		startMove(this,'width',60);
+	};
+	
+	aDiv[2].onmouseover = function (){
+		//alert(getStyle(aDiv[2],'opacity'));
+		startMove(this,'opacity',100);
+	};
+	
+	aDiv[2].onmouseout = function (){
+		startMove(this,'opacity',30);
+	};
+ };
+</script>
+</head>
+
+<body>
+<!--<input type="text" id="txt"/>-->
+<div>请点击我移动</div>
+<div></div>
+<div></div>
+</body>
+</html>

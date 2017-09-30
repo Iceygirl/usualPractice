@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+input:enabled { color:red;}
+input:disabled { color:blue;}
+input:checked { width:100px; height:100px;}
+
+p { width:200px; border:1px solid #000;}
+/*p:first-line { background:#F99;}*/
+p:first-letter { font-size:20px;}
+p::selection { background:#F69;}
+p:before { content:'Good Morning!'; display:block; background:#63F;}
+p:after { content:'byebye!'; display:block; background:#63F;}
+</style>
+</head>
+
+<body>
+<input type="text" value="请输入.." disabled/>
+<input type="checkbox"/>
+<p>早上好，周小曼，美好的一天开始啦！早上好，周小曼，美好的一天开始啦！早上好，周小曼，美好的一天开始啦！早上好，周小曼，美好的一天开始啦！</p>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	window.onload = function (){
+		var oBody = document.body;
+		var str = '';
+		
+		setInterval(getTime,1000);
+		getTime();
+		function getTime(){
+			var time = new Date();
+			var iYear = time.getFullYear();
+			var iMonth = time.getMonth()+1;
+			var iDay = time.getDate();
+			var iWeek = time.getDay();
+			var iHour = time.getHours();
+			var iMinute = time.getMinutes();
+			var iSecond = time.getSeconds();
+			
+			if(iWeek === 0 ) iWeek = '星期天';
+			if(iWeek === 1 ) iWeek = '星期一';
+			if(iWeek === 2 ) iWeek = '星期二';
+			if(iWeek === 3 ) iWeek = '星期三';
+			if(iWeek === 4 ) iWeek = '星期四';
+			if(iWeek === 5 ) iWeek = '星期五';
+			if(iWeek === 6 ) iWeek = '星期六';	
+			
+			 str = iYear +'年'+ iMonth +'月'+ iDay +'日'+ iWeek + toTwo(iHour) +'时'+ toTwo(iMinute) +'分'+ toTwo(iSecond) +'秒';
+			 oBody.innerHTML = str;
+		}
+		
+		function toTwo(t){
+			return t<10?'0'+t:''+t;
+		};
+		
+	};
+	
+/*
+	系统时间对象
+	new Date()		// 当前系统的时间对象,typeof=>object
+	iYear,iMonth... //typeof=>number
+*/
+ 
+
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

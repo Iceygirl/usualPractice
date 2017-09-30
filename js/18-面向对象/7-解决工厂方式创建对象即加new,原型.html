@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+function CreatePerson (name,sex){  		
+
+	this.name = name;
+	this.sex = sex;
+	 
+	this.showName = function (){
+		alert(this.name);
+	}
+	this.showSex = function (){
+		alert(this.sex);
+	}
+}	
+CreatePerson.prototype.showName = function (){
+	alert(this.name);
+};
+CreatePerson.prototype.showSex = function (){
+	alert(this.name);
+};
+var p1 = new CreatePerson('zmx','女');
+var p2 = new CreatePerson('zxe','女');
+p1.showName();
+p1.showSex();
+p2.showName();
+p2.showSex();
+</script>
+</head>
+<body>
+</body>
+</html>

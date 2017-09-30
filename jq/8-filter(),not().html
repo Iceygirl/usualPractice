@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	//$('div').filter('.box').css('background','red'); 
+	$('div').not('.box').css('background','blue');
+ });
+</script>
+</head>
+
+<body>
+<div class="box">1</div>
+<div>2</div>
+</body>
+</html>

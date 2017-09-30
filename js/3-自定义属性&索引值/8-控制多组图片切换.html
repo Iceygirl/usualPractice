@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,input { margin:0; padding:0;}
+ img { border:none;}
+ 
+ .btnPrev, .btnNext { width:80px; height:30px; background:#333; line-height:30px; text-align:center; color:#fff; border:none; position:absolute; top:40px; font-size:20px; }
+ .btnPrev { left:300px;}
+ .btnNext { left:400px;}
+ .prev { width:400px; height:460px; position:absolute; top:100px; left:50px; border:10px solid #CCC;}
+ .prev img { position:absolute; top:0; left:0; width:400px; height:400px;}
+ .prev .text { position:absolute; top:410px; left:180px;}
+ .prev .num { position:absolute; top:420px; left: 360px;}
+ .next { width:300px; height:260px; position:absolute; left:500px; top:150px; border:10px solid #999; }
+ .next img { width:300px; height:200px; position:absolute; left:0; top:0;}
+ .next .text { position:absolute; top:210px; left:140px;}
+ .next .num { position:absolute; top:230px; left:270px;}
+ 
+</style>
+<script>
+ function getByClass(oPar,sClass){
+	var arr = [];
+	var aEle = oPar.getElementsByTagName('*'); 
+	
+	for(var i=0;i<aEle.length;i++){
+		if(aEle[i].className == sClass){
+			arr.push(aEle[i]);	
+		}
+	}
+	return arr[0];
+ }
+ 
+ window.onload = function (){
+	var oPrev = getByClass(document,'prev'); 
+	var oNext = getByClass(document,'next'); 
+	var json = {
+		'arrPUrl':['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'],
+		'arrNUrl':['img1/1.png','img1/2.png','img1/3.png','img1/4.png'],
+	
+		'arrPText':['第一组第一张','第一组第二张','第一组第三张','第一组第四张'],
+		'arrNText':['第二组第一张','第二组第二张','第二组第三张','第二组第四张'],
+	}
+	var num = 0;
+	var oPImg = getByClass(oPrev,'img'); 
+	var oNImg = getByClass(oNext,'img');
+	var oBtnPrev = getByClass(document,'btnPrev');
+	var oBtnNext = getByClass(document,'btnNext');
+	
+	oPImg.onclick = function (){
+		num++;
+		fnTab(oPrev,json.arrPUrl,json.arrPText);
+	};
+	
+	oNImg.onclick = function (){
+		num++;
+		fnTab(oNext,json.arrNUrl,json.arrNText);
+	};
+	
+	oBtnNext.onclick = function (){
+		num++;
+		fnTab(oPrev,json.arrPUrl,json.arrPText);
+		fnTab(oNext,json.arrNUrl,json.arrNText);
+	};
+	
+	oBtnPrev.onclick = function (){
+		num--;
+		if(num == -1){
+			num = json.arrPText.length -1;	
+		}
+		fnTab(oPrev,json.arrPUrl,json.arrPText);
+		fnTab(oNext,json.arrNUrl,json.arrNText);
+	};
+	
+	function fnTab(obj,arrUrl,arrText){
+		var oText = getByClass(obj,'text');
+		var oNum = getByClass(obj,'num');
+		var oImg = getByClass(obj,'img');
+		
+		oNum.innerHTML = 1+num%arrUrl.length+'/'+arrUrl.length;
+		oText.innerHTML = arrText[num%arrText.length];
+		oImg.src = arrUrl[num%arrUrl.length];
+	}
+	
+	fnTab(oPrev,json.arrPUrl,json.arrPText);
+	fnTab(oNext,json.arrNUrl,json.arrNText);
+ };
+</script>
+</head>
+
+<body>
+<input class="btnPrev"type="button" value="上一组" />
+<input class="btnNext" type="button" value="下一组" />
+<div class="prev">
+	<img src="" alt="loading" class="img"/>
+	<span class="text">sfs</span>
+    <span class="num">fsf</span>
+</div>
+
+<div class="next">
+	<img src="" alt="loading" class="img" />
+	<span class="text">sfs</span>
+    <span class="num">fsf</span>
+</div>
+
+</body>
+</html>

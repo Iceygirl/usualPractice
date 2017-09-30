@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ body,h2,ul,p { margin:0; padding:0;}
+ li { list-style:none; }
+ a { text-decoration:none; color:#000;}
+ img { border:none;}
+ 
+ #books { width:300px; margin:60px auto; border:1px solid #000;}
+ .header { width:275px; height:35px; padding:5px 5px 0 20px; position:relative;}
+ .header h2 { font-size:18px; line-height:35px;}
+ .header a { border:1px solid #999; position:absolute; right:5px; top:14px; font-size:10px;}
+ 
+ .list { padding:0 30px 30px 20px; width:250px; }
+ .list li { border-bottom:1px solid #666;}
+ 
+ .title { width:250px; height:40px; position:relative;}
+ .title span,.title p { position:absolute;}
+ .title span,.details span{ display:block; width:14px; height:14px; font-size:12px; line-height:14px; text-align:center; background:#000; color:#fff; left:0; top:13px; }
+ .title p { left:44px; font-size:16p;line-height:40px;}
+ 
+ .details { width:250px; height:150px; position:relative; display:none;}
+ .details span,.details .img,.details p:nth-of-type(1),.details p:nth-of-type(2) { position:absolute;}
+ .details .img { display:display; width:100px; height:132px; padding:2px; border:1px solid #CCC; left:24px; top:10px;}
+ .details .img:hover { border-color:#000;}
+ .details p:nth-of-type(1){ left:140px; top:20px;}
+ .details p:nth-of-type(2) { left:140px; top:40px; font-size:14px; color:#999;}
+</style>
+<script>
+
+ window.onload = function (){
+	 
+	 var oUl = document.getElementsByTagName('ul')[0];
+	 var aLi = oUl.getElementsByTagName('li');
+	 var oTitle = null;
+	 var oDetails = null;
+	 var oSpan = null;
+	 
+	 for(var i=0;i<aLi.length;i++){
+		 
+		aLi[i].onmouseover = function (){
+			oTitle = this.getElementsByTagName('div')[0];
+	 		oDetails = this.getElementsByTagName('div')[1];
+			oSpan = oDetails.getElementsByTagName('span')[0];
+			
+			oTitle.style.display = 'none';
+			oDetails.style.display = 'block';
+			oSpan.style.background = 'red';
+	};
+	
+		aLi[i].onmouseout = function (){
+			oTitle = this.getElementsByTagName('div')[0];
+	 		oDetails = this.getElementsByTagName('div')[1];
+			oTitle.style.display = 'block';
+			oDetails.style.display = 'none';
+		};
+ } 
+ }
+ 
+</script>
+</head>
+
+<body>
+<div id="books">
+	<div class="header">
+    	<h2>图书畅销榜</h2>
+        <a href="#">MORE>></a>
+    </div>
+    <ul class="list">
+    	<li>
+        	<div class="title">
+            	<span>1</span>
+                <p><a href="#">蛙</a>
+            </div>
+            <div class="details">
+            	<span>1</span>
+                <a href="#" class="img">
+                	<img src="img/1.jpg" alt=""/>
+                </a>
+                <p><a href="#">蛙</a></p>
+                <p>作者：莫言</p>
+            </div>
+        </li>
+        <li>
+        	<div class="title">
+            	<span>2</span>
+                <p><a href="#">白鹿原</a>
+            </div>
+            <div class="details">
+            	<span>2</span>
+                <a href="#" class="img">
+                	<img src="img/2.jpg" alt=""/>
+                </a>
+                <p><a href="#">白鹿原</a></p>
+                <p>作者：...</p>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

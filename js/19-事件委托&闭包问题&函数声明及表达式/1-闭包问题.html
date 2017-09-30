@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>闭包</title>
+		<script>				
+			/*
+				1.q:什么是闭包
+		          a:函数嵌套函数，内部函数可以引用外部函数的参数和变量，参数和变量不会被垃圾回收机制收回
+				2.q:闭包有什么好处，应用在哪里
+				  a:A.好处：
+					（1）.希望一个变量长期驻扎在内存当中
+					（2）.避免全局变量的污染
+					（3）.私有成员的存在
+					B.用法：
+					（1）.模块化代码
+					（2）.在循环中直接找到对应元素的索引
+				3.q:使用闭包需要注意的东西 
+				  a:IE下会引发内存泄漏
+				  
+				4.JS中的垃圾回收机制:当函数调用完毕，参数和变量会被回收
+				5.内存泄露：页面跳转的时候变量不会释放，一直存在在内存中，会使cpu累加，造成负担，只有当浏览器关闭的时候才会释放内存
+			
+			
+				var a = 1;
+				function fn (){
+					a++;
+					alert(a);
+				}
+				fn(); //2
+				fn(); //3
+			
+			
+			function aaa(a){
+				
+				var b = 5;
+
+				function bbb(){
+					alert(a);
+					alert(b);
+				}
+
+			}
+
+			aaa(1);  //没有弹出什么东西
+			
+						
+			JS中的垃圾回收机制:当函数调用完毕，参数和变量会被回收
+
+			function aaa(){
+				
+				var a = 1;
+				
+			}
+
+			aaa();
+			
+						
+			function aaa(){
+				var a = 5;
+				function bbb(){
+					alert(a);
+				}
+				return bbb;
+			}
+
+			var c = aaa();
+
+			c();  //5
+			
+			
+						
+			var a = 1;
+			function aaa(){
+				a++;
+				alert(a);
+			}
+
+			aaa();  //2
+			aaa();  //3
+			alert(a);  //undefined
+
+
+			function aaa(){
+				var a = 1;
+				a++;
+				alert(a);
+			}
+			aaa();  //2
+			aaa();  //2
+
+
+			function aaa(){
+				var a = 1;
+				return function(){
+					a++;
+					alert(a);
+				}
+			}
+
+			var b = aaa();
+
+			b();  //2
+			b();  //3
+			alert(a);  //undefined
+
+
+			var aaa = (function(){
+
+				var a = 1;
+				return function(){
+					a++;
+					alert(a);
+				}
+
+			})();
+
+			aaa();  //2
+			aaa();  //3
+
+			var aaa = (function(){
+
+				var a = 1;
+				
+				function bbb(){
+					a++;
+					alert(a);
+				}
+				
+				function ccc(){
+					a++;
+					alert(a);
+				}
+				
+				return {
+					
+					b : bbb,
+					c : ccc
+					
+				}
+
+			})();
+
+
+			aaa.b();  //2
+			aaa.c();  //3
+
+			alert(a);
+			alert(bbb);
+			alert(ccc);
+			
+						
+			function aaa(){
+				alert(1);
+			}
+			aaa();
+			可以写成：
+			(function(){
+				alert(1);
+			})();
+			
+			
+			window.onload = function(){
+				var aLi = document.getElementsByTagName('li');
+				
+				for(var i=0;i<aLi.length;i++){
+				
+					(function(i){
+					
+						aLi[i].onclick = function(){
+							alert(i);
+						};
+					
+					})(i);
+					
+					//for循环结束了，i已经变成3，在进行点击
+				}
+				
+				for(var i=0;i<aLi.length;i++){
+				
+					
+						aLi[i].onclick = (function(i){
+						
+							return function(){
+								alert(i);	
+							}
+							
+						})(i);
+
+					
+				}
+				
+			};
+			
+			//IE下会引发内存泄漏
+
+			window.onload = function(){
+				var oDiv = document.getElementById('div1');
+				
+				oDiv.onclick = function(){
+					alert(oDiv.id);  //对象的属性用外部函数的对象时会造成这种情况
+				};
+				
+				window.onunload = function(){
+					oDiv.onclick = null;
+				};
+				
+			};
+
+			window.onload = function(){
+				var oDiv = document.getElementById('div1');
+				
+				var id = oDiv.id;
+				
+				oDiv.onclick = function(){
+					alert(id);
+				};
+				
+				oDiv = null;
+				
+			};
+			*/
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>1111111</li>
+			<li>1111111</li>
+			<li>1111111</li>
+		</ul>
+	</body>
+</html>

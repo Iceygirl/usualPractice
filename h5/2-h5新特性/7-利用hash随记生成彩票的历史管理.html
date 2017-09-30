@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+//触发历史管理 : 1.通过跳转页面  2.hash  3.pushState 
+
+ window.onload = function (){
+	var oBtn = document.querySelector('input');
+	var oDiv = document.querySelector('div');
+	var json = {};		//做一个映射，将随机生成的num和7个数对应起来
+	
+	oBtn.onclick = function (){
+		var num = Math.random();
+
+		var arr = randomNum(35,7);
+		
+		json[num] = arr;
+		
+		oDiv.innerHTML = arr;
+		
+		window.location.hash = num;
+	};
+	
+	window.onhashchange = function (){
+		oDiv.innerHTML = json[window.location.hash.substring(1)];   //hash值是带#的
+	};
+	
+	function randomNum(iAll,iNow){
+		var arr = [];
+		var newArr = [];
+		
+		for(var i=1;i<=iAll;i++){
+			arr.push(i);	
+		}
+		
+		for(var i=0;i<iNow;i++){
+			newArr.push( arr.splice( Math.floor(Math.random()*arr.length),1));	
+		}
+		
+		return newArr;
+	};
+ };
+</script>
+</head>
+
+<body>
+<input type="button" value="随机生成彩票"/>
+<div></div>
+</body>
+</html>

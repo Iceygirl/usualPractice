@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>定位层级</title>
+		<style>
+			body{margin:0;}
+			.div1{width:100px;height:100px;background:red;position:absolute;}
+			.div2{width:200px;height:200px;background:green;position:relative;}
+			.div3{width:100px;height:100px;background:blue;}
+			
+			/*
+			
+			定位元素默认后者层级高于前者
+			
+			z-index:number;  ----定位层级
+			
+			*/
+		</style>
+	</head>
+	<body>	
+		<div class="div1">div1</div>
+		<div class="div2">div2</div>
+		<div class="div3">div3</div>
+	</body>
+</html>

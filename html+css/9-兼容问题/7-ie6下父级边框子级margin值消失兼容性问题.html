@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<neta charset="utf-8"/>
+		<title>兼容性问题</title>
+		<style>
+			.father{background:blue;border:1px solid black;zoom:1;}
+			.son{width:100px;height:100px;background:red;margin-top:100px;}
+			/*
+			1.子级的margin值会传递给父级，解决方法是给父级加浮动或者加宽高，overflow:hidden;
+			2.ie6下父级有边框时，margin值会消失
+			解决方法：触发父级的haslayout,加上zoom:1;
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="father">
+			<div class="son"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>兼容性问题1</title>
+		<style>
+			.box{height:2px;background:red;overflow:hidden;}
+		
+		/*
+		ie6下的最小高度问题：
+			ie6下元素高度小于19px,都会当做19px来处理
+		解决办法：
+			overflow:hidden;
+		*/
+		</style>
+	</head>
+	<body>
+		<div class="box">
+		
+		</div>
+	</body>
+</html>

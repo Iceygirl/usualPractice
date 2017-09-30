@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	$('div').click(function (){
+		alert(123);	
+	}); 
+	
+	$('div').clone(true).appendTo($('span'));
+ });
+ 
+ /*$('div').appendTo( $('span') );  这两种都是剪切操作
+ $('span').get(0).appendChild( $('div').get(0) );
+	
+ clone() : 可以接收一个参数 ，作用可以复制之前的操作行为*/
+	
+</script>
+</head>
+
+<body>
+<div>11</div>
+<span>22</span>
+</body>
+</html>

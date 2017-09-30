@@ -1,0 +1,23 @@
+<!CODTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>png问题</title>
+		<style>
+			body{background:#000;}
+			.box{width:400px;height:400px;background:url(png.png);}
+		</style>
+		<!-- 在ie6下png图片的背景无法做到透明化，因此引入该js库.
+			又因为该文件只需要在ie6下加载，其他浏览器加载的话脚本会错误
+			因此为下面的代码-->
+		<!--[if IE 6]>
+		<script src="DD_belatedPNG_0.0.8a.js"></script>
+		<script>
+			DD_belatedPNG.fix('.box'); 
+		</script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

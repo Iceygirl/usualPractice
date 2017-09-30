@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>margin外边距</title>
+		<style>
+			#box1
+			{
+				width:120px;
+				height:120px;
+				background:red;
+				margin-bottom:30px;
+			}
+			
+			#box2
+			{
+				width:120px;
+				height:120px;
+				background:blue;
+				margin-top:30px;
+			}
+			
+			#box3
+			{
+				width:120px;
+				height:120px;
+				background:red;
+				padding:10px;
+			}
+			
+			#box4
+			{
+				width:30px;
+				height:30px;
+				background:yellow;
+				margin:10px;
+			}
+			
+			#box5
+			{
+				width:120px;
+				height:120px;
+				background:purple;
+				margin:0 auto;
+			}
+			/*
+			
+			外边距注意的问题：
+			1.上下外边距会叠压；
+			2.当父级包含子级的时候，子级的margin-top会传递给父级，意思是显示不出上外边距
+			(一般用内边距代替外边距)
+			3.margin:0 auto 表示横向居中 */
+		</style>
+	</head>
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3">
+			<div id="box4">
+			
+			</div>
+		</div>
+		<div id="box5"></div>
+	</body>
+</html>

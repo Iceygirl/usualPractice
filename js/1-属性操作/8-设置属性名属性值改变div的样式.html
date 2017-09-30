@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ div { width:100px; height:100px; border:4px solid #000; margin:30px 60px;}
+</style>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input'); 
+	var oAttrName = aInp[0];
+	var oAttrVal = aInp[1];
+	var oBtn = aInp[2];
+	var oDiv = document.getElementsByTagName('div')[0];
+	oBtn.onclick = function (){
+		if(oAttrName.value == 'background'){
+			oDiv.style[oAttrName.value] = oAttrVal.value;
+		} else {
+			oDiv.style[oAttrName.value] = oAttrVal.value+'px';
+		}
+		
+		oAttrName.value = '';
+		oAttrVal.value = '';
+	};
+ };
+</script>
+</head>
+
+<body>
+请输入属性名:<input type="text" />
+请输入属性值:<input type="text" />
+<input type="button" value="确定" />
+<div></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+.active { background:red;}
+#div1 div { width:150px; height:100px; background:red; display:none; }
+</style>
+<script>
+window.onload = function (){
+	var ts = new TabSwitch("div1");
+};
+
+function TabSwitch(id){
+	var oDiv = document.getElementById(id);
+	this.aInp = oDiv.getElementsByTagName('input');
+	this.aDiv = oDiv.getElementsByTagName('div');
+	this.aDiv[0].style.display = 'block';
+	
+	var _this = this;
+	
+	for(var i=0;i<this.aInp.length;i++){
+		this.aInp[i].index = i;
+		this.aInp[i].onclick = function (){
+			_this.tab(this);
+		};
+	}
+};
+
+TabSwitch.prototype.tab = function(oBtn){
+	for(var i=0;i<this.aInp.length;i++){
+		this.aInp[i].className = '';
+		this.aDiv[i].style.display = 'none';
+	}
+	oBtn.className = 'active';
+	this.aDiv[oBtn.index].style.display = 'block';
+};
+</script>
+</head>
+<body>
+<div id="div1">
+	<input class="active" type="button" value = "aaa"/>
+	<input type="button" value = "bbb"/>
+	<input type="button" value = "ccc"/>
+	<div>aaaaaaa</div>
+	<div>bbbbbbb</div>
+	<div>ccccccc</div>
+</div>
+</body>
+</html>

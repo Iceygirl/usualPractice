@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ #login { width:300px; height:200px; border:1px solid #000; position:absolute; left:0; top:0;}
+ #close { position:absolute; right:0; top:0; cursor:pointer;}
+</style>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	$('#btn1').click(function (){
+		
+		var oLogin = $('<div id="login"><p>用户名：<input type="text" /></p><p>密码：<input type="text"/></p><input type="button" value="提交"/> <div id="close">X</div></div>');	
+		$('body').append(oLogin);
+		
+		oLogin.css('left',($(window).width()-oLogin.outerWidth())/2);
+		oLogin.css('top',($(window).height()-oLogin.outerHeight())/2);
+		
+		$('#close').click(function(){
+			oLogin.remove();	
+		});
+		
+		$(window).on('resize scroll',function (){
+			oLogin.css('left',($(window).width()-oLogin.outerWidth())/2);	
+			oLogin.css('top',($(window).width()-oLogin.outerWidth())/2+$(window).scrollTop());
+		});
+	}); 
+ });
+</script>
+</head>
+
+<body style="height:2000px;">
+<input type="button" value="登录" id="btn1"/>
+
+</body>
+</html>

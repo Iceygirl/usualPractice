@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+	
+	var arr = [1,2,3,4,5];
+	alert(arr.length);	//属性
+	arr.push(6);
+	alert(arr); 		//方法
+	
+	var a=12;			//变量：自由
+	arr.a = 12;			//属性：属于某个对象
+	alert(arr.a);
+	
+	function show(){	//函数：自由
+		alert(1);
+	}
+	show();
+	
+	arr.fn = function (){  //方法：属于某个对象
+		alert(1);
+	}
+	arr.fn();
+</script>
+</head>
+<body>
+</body>
+</html>

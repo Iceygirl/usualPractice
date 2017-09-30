@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>兼容性问题7</title>
+		<style>
+			.box{border:1px solid black;overflow:hidden;width:568px;}
+			.box div{width:100px;height:100px;background:red;border:1px solid grey;margin:20px;float:left;display:inline;}
+			
+			/*
+				在ie6下，当一行子元素占有的宽度之和和父级宽度相差超过3px,或者不满行的情况下，
+				最后一行的子元素的下margin值会消失。
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#tab { border-collapse:collapse;}
+td { width:50px;}
+</style>
+<script>
+window.onload = function (){
+	var oTab = document.getElementById('tab');
+	var oBtn = document.getElementById('btn');
+	var aRow = oTab.tBodies[0].rows;
+	var arr = [];
+	var bAsc = true;
+	
+	oBtn.onclick = function (){
+		
+		for(var i=0;i<aRow.length;i++){
+			arr[i] = aRow[i];
+		}
+		
+		arr.sort(function (tr1,tr2){
+			if(bAsc){
+				return parseInt(tr1.cells[0].innerHTML)-parseInt(tr2.cells[0].innerHTML);
+			} else {
+				return parseInt(tr2.cells[0].innerHTML)-parseInt(tr1.cells[0].innerHTML);
+			}
+		});
+		
+		for(var i=0;i<arr.length;i++){
+			oTab.tBodies[0].appendChild(arr[i]);
+		}
+		
+		bAsc = !bAsc;
+		/*
+		if(bAsc){
+			bAsc = false;
+		} else {
+			bAsc = true;
+		}
+		*/
+	};
+};
+</script>
+</head>
+<body>
+<input id="btn" type="button" value="排序"/>
+<table id="tab" border="1">
+	<thead>
+		<td>Id</td>
+		<td>姓名</td>
+		<td>操作</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td>2</td>
+			<td>zmx</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>zmx</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>zmx</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>zmx</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>zmx</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>zmx</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>zmx</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

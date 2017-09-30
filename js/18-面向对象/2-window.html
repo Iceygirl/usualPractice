@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+	//变量和函数属于window对象
+	var a = 12;
+	alert(window.a);
+	
+	function show(){
+		alert(1);
+	}
+	show();
+	window.show = function (){
+		alert(1);
+	}
+	window.show();
+</script>
+</head>
+<body>
+</body>
+</html>

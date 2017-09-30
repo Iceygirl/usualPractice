@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>table实例</title>
+		<style>
+			body{margin:0;}
+			table{border-collapse:collapse;}
+			th,td{padding:0;}
+			img{border:none;vertical-align:top;}
+			
+			.table{width:640px;margin:30px auto;}
+			.table th,.table td{border:1px solid #99b0da;}
+			.table th{height:30px;background:#dbe3fa;font-size:16px;color:#000000;}
+			.table td{height:28px;font-size:12px;text-align:center;}
+			.table .special{background:#f4f7fc;}
+			.table .highT{color:#e54600;}
+			.table .lowT{color:#000065;}
+			.table .sat{color:#cc0000;}
+		</style>
+	</head>
+	<body>
+		<table class="table">
+			<tr>
+				<th colspan="2"  width="172">日期</th>
+				<th colspan="2" width="179">天气现象</th>
+				<th width="95">气温</th>
+				<th width="94">风向</th>
+				<th width="94">风力</th>
+			</tr>
+			<tr>
+				<td rowspan="2" width="95" class="special">22日星期五</td>
+				<td width="76" class="special">白天</td>
+				<td width="63"><img src="img/sun.png"/></td>
+				<td width="115">晴间多云</td>
+				<td class="highT">高温7℃</td>
+				<td>无持续风向</td>
+				<td>微风</td>
+			</tr>
+			<tr>
+				<td class="special">夜间</td>
+				<td><img src="img/moon.png"/></td>
+				<td>晴</td>
+				<td class="lowT">低温-4℃</td>
+				<td>无持续风向</td>
+				<td>微风</td>
+			</tr>
+			<tr>
+				<td rowspan="2" class="special sat">23日星期六</td>
+				<td class="special">白天</td>
+				<td><img src="img/sun.png"/></td>
+				<td>晴</td>
+				<td class="highT">高温9℃</td>
+				<td>无持续风向</td>
+				<td>微风</td>
+			</tr>
+			<tr>
+				<td class="special">夜间</td>
+				<td><img src="img/moon.png"/></td>
+				<td>阴</td>
+				<td class="lowT">低温-2℃</td>
+				<td>无持续风向</td>
+				<td>微风</td>
+			</tr>
+		</table>
+	</body>
+</html>

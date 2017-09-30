@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ body { background:#000;}
+ #c1 { background:#fff;}
+ span { color:#000;}
+</style>
+<script>
+ window.onload = function (){
+	 var oC = document.getElementById('c1');
+	 var oGC = oC.getContext('2d');
+	 
+	 var yImg = new Image();
+	 yImg.onload = function (){
+		draw(this); 
+	 };
+	 yImg.src = 'img.jpg';
+	 
+	 function draw(obj){
+		var bg = oGC.createPattern(obj,'repeat');
+		oGC.fillStyle = bg;
+		oGC.fillRect(0,0,200,200); 
+	 };
+	 
+ };
+/* 
+ 设置背景：
+ createPattern(oImg,平铺方式)
+    -- repeat,repeat-x,repeat-y,no-repeat
+*/
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="400">
+	<span></span>
+</canvas>
+</body>
+</html>

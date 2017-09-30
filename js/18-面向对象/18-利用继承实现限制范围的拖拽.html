@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#div1 { width:50px; height:50px; background:red; position:absolute;}
+#div2 { width:50px; height:50px; background:yellow; position:absolute;}
+</style>
+<script src="Drag.js"></script>
+<script src="LimitDrag.js"></script>
+<script>
+
+window.onload = function (){
+	new Drag ('div1');
+	new LimitDrag ('div2');
+};
+
+</script>
+</head>
+<body>
+<div id="div1">fsf</div>
+<div id="div2">1113</div>
+</body>
+</html>

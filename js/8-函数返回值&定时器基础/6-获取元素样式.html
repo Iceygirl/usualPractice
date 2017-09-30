@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="currency.js"></script>
+<style>
+div { width:100px; height:100px; background:red;}
+</style>
+<script>
+	$(function (){
+		//$('div').style.width = '200px';
+		//$('div').style.cssText = 'width:300px';
+		$('btn').onclick = function (){
+			//alert($('div').style.width);				//弹出为空
+			//alert(getComputedStyle($('div')).width);	//ie6,7,8不兼容
+			//alert($('div').currentStyle.width);			//标准浏览器不兼容
+			alert( getStyle( $('div'), 'width' ));
+			alert( getStyle( $('div'), 'height' ));
+		};
+	});
+	/*
+		获取到的是元素css中样式：
+		1.background: url() red ……		复合样式（不要获取）
+			backgroundColor					单一样式可以获取（但不要用来做判断）
+		2.不要有空格
+		3.不要获取未设置后的样式：不兼容
+	*/
+</script>
+</head>
+
+<body>
+<input id="btn" type="button" value="获取元素样式" />
+<div id="div"></div>
+</body>
+</html>

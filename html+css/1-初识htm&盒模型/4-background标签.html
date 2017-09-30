@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>background背景标签</title>
+		<style>
+			#box
+			{
+				width:120px;
+				height:120px;
+				background:red url(icon.gif);
+				margin:10px;
+				/*默认图片会铺满整个背景*/
+			}
+			#box1
+			{
+				width:140px;
+				height:140px;
+				background:blue url(icon.gif) no-repeat;
+				/*还有repeat-x,repeat-y*/
+			}
+			#bo
+			{
+				height:1400px;
+				background:yellow url(icon.gif) no-repeat center 0px fixed;
+				/*
+				 复合属性：一个属性有多个属性值
+				 10px 10px (往X轴的移动大小和往Y轴的移动大小)；
+				 fixed(背景图是否滚动,这里表示固定)
+				 */
+				 
+			}
+		</style>
+	</head>
+	<body id="bo">
+		<div id="box">块一</div>
+		<div id="box1">块二</div>
+	</body>
+</html>

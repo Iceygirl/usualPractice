@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input');
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	
+	aInp[1].onclick = function (){
+		var oLi = document.createElement('li');
+		oLi.innerHTML = aInp[0].value;
+		
+		if(aLi.length ==0){
+			oUl.appendChild(oLi);	
+		} else{
+			oUl.insertBefore(oLi, aLi[0]);    //如果ul中没有元素,在ie6,7下aLi[0]会发生错误
+		}
+	};
+ };
+ 
+ /*在父节点前面追加子节点：父节点.insertBefore(子节点，谁之前);*/
+</script>
+</head>
+
+<body>
+<input type="text" />
+<input type="button" value="创建" />
+<ul>
+</ul>
+</body>
+</html>

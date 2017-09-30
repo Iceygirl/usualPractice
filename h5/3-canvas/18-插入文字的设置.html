@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:black;}
+#c1{ background:white;}
+</style>
+<script>
+
+window.onload = function(){
+	var oC =document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	
+	oGC.font = '60px impact';
+	
+	oGC.textBaseline = 'top';  //middle bottom  以左上角为基准出现
+	
+	oGC.fillText('周小曼',0,0);			//文字填充
+	
+	oGC.strokeText('周小曼',0,200);   //文字边框，可以用fillStyle,strokeStyle来设置
+	
+	
+	//textBaseline:文字上下的位置默认为alphabetic
+};
+
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="400"></canvas>
+</body>
+</html>

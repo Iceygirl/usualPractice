@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input');
+	var n = 0;
+	
+	aInp[1].onclick = function (){
+		var str = aInp[0].value;
+		
+		if(testIsNum(str)){
+			alert('恭喜，'+str+'是数字，输入正确！');	
+		} else {
+			alert('只能输入数字哦');	
+			aInp[0].value = '';
+		}
+	};
+	
+	function  testIsNum(s){
+		for(var i=0;i<s.length;i++){
+			n = s.charCodeAt(i);
+			if( n<48 ||n>57) return false;		
+		}
+		return true;
+	};
+ };
+</script>
+</head>
+
+<body>
+ 请输入数字：<input type="text" />
+ <input type="button" value="检测" />
+</body>
+</html>

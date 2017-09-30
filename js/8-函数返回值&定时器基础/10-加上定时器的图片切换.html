@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,ul { margin:0; padding:0;}
+ li { list-style:none;}
+ img { border:none;}
+ 
+ body { background:#666;}
+ .picTab { width:400px; heihgt:500px; margin:50px auto; border:1px solid #fff; position:relative; background:url(img1/loader_ico.gif) no-repeat center center;}
+ .picTab .num ,.picTab .text{ display:block; width:400px; height:30px; background:#000; filter:alpha(opacity=70); opacity:0.7; line-height:30px; text-align:center; color:#fff; position:absolute; left:0;}
+ .picTab .num { top:0;}
+ .picTab .text{ bottom:0;}
+ .picTab img { width:400px; height:500px;}
+ .picTab .list { width:400px; height:20px; position:absolute; top:520px; text-align:center;}
+ .picTab ul{ height:20px; }
+ .picTab ul li{ float:left; width:20px; height:20px; background:#000; margin-right:10px; cursor:pointer;}
+ .picTab .active { background:#FC9;}
+</style>
+<script>
+ window.onload = function (){
+	var num =0;
+	var json ={
+		'arrUrl':['img1/1.png','img1/2.png','img1/3.png','img1/4.png'],
+		'arrText':['图一','图二','图三','图四']	
+	};
+		
+	function tab(){
+		var oDiv = document.getElementsByTagName('div')[0];
+		var oUl = document.getElementsByTagName('ul')[0];
+		var aLi = oUl.getElementsByTagName('li');
+		var oImg = oDiv.getElementsByTagName('img')[0];
+		var aSpan = oDiv.getElementsByTagName('span');
+		var oNum = aSpan[0];
+		var oText = aSpan[1];
+		
+	 
+		oUl.innerHTML = '';
+		
+		for(var i=0;i<json.arrUrl.length;i++){
+			oUl.innerHTML += '<li>'+'</li>';	
+		}
+		
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].index = i;
+			
+			aLi[i].onclick = function (){
+				
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].className = '';	
+				}
+			
+				this.className = 'active';
+				num = this.index;
+				fnTab();	
+			};
+		}
+		
+		function fnTab (){
+			oNum.innerHTML = 1+num+'/'+json.arrUrl.length;
+			oText.innerHTML = json.arrText[num];
+			oImg.src = json.arrUrl[num];
+			aLi[num].className = 'active';
+		}
+		fnTab();
+	}
+	
+	var timer = null;
+	function autoPlay(){
+		timer = setInterval(function (){
+			tab();
+			num++;
+			num%=json.arrUrl.length;
+		},1000);
+	}
+	setTimeout(autoPlay,1000);
+	var oDiv= document.getElementsByTagName('div')[0];
+	oDiv.onmouseover = function (){
+		clearInterval(timer);
+	};
+	
+	oDiv.onmouseout = autoPlay;
+ };
+</script>
+</head>
+
+<body>
+<div class="picTab">
+ <span class="num">数量正在加载中...</span>
+ <span class="text">文字正在加载中...</span>
+ <img src="" alt="loading" />
+ <div class="list"><ul></ul></div>
+</div>
+</body>
+</html>

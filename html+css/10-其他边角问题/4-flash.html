@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>flash</title>
+	</head>
+	<style>
+		body{background:black;}
+		.box{width:200px;height:200px;background:pink;position:absolute;left:20px;top:20px;}
+		
+		/*
+		两个问题：
+		1.flash的背景没透明化
+		2.在ie下粉色的块没有显示出来
+		这两个问题的解决方法都是：
+		在object中加
+		<param name="wmode" value="transparent">
+		<embed wmode="transparent"></embed>
+		*/
+		
+	</style>
+	<body>
+		<!--<object>
+			<param name="wmode" value="transparent">
+			<embed src="1.swf" width="400" height="400" wmode="transparent"></embed>
+		</object>-->
+		<div class="box"></div>
+		
+	</body>
+</html>

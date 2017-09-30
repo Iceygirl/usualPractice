@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,ul { margin:0; padding:0;}
+ li { list-style:none;}
+ #picScroll { width:700px; height:120px; border:10px solid #CCC; margin:50px auto; position:relative; overflow:hidden;}
+ #picScroll ul { position:absolute; left:0;}
+ #picScroll ul li{ width:120px; height:100px; padding:10px; float:left; }
+ #picScroll img { width:120px; height:100px;}
+</style>
+<script>
+ window.onload = function (){
+	var oDiv = document.getElementById('picScroll');
+	var oUl = oDiv.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li'); 
+	var timer= null;
+	
+	var speed =2;
+	
+	oUl.innerHTML+=oUl.innerHTML;
+	oUl.style.width = aLi.length*aLi[0].offsetWidth+'px';
+	
+	function fnMove(){
+		if(oUl.offsetLeft<-oUl.offsetWidth/2){
+			oUl.style.left=0;	
+		} else if( oUl.offsetLeft>0){
+			oUl.style.left = -oUl.offsetWidth/2+'px';
+		}
+		oUl.style.left = oUl.offsetLeft+speed+'px';
+	}
+	timer = setInterval(fnMove,30);
+	
+	var aA = document.getElementsByTagName('a');
+	
+	aA[0].onclick = function (){
+		speed = -2;
+	};
+	
+	aA[1].onclick = function (){
+		speed = 2;
+	};
+	
+	oDiv.onmouseover = function (){
+		clearInterval(timer);
+	};
+	
+	oDiv.onmouseout = function (){
+		timer = setInterval(fnMove,30);
+	};
+ };
+</script>
+</head>
+
+<body>
+	<a class="prev" href="javascript:;">向左滚动</a>
+    <a class="next" href="javascript:;">向右滚动</a>
+<div id="picScroll">
+	<ul>
+    	<li><img src="images/1.jpg" /></li>
+    	<li><img src="images/2.jpg" /></li>
+    	<li><img src="images/3.jpg" /></li>
+    	<li><img src="images/4.jpg" /></li>
+    	<li><img src="images/5.jpg" /></li>
+    	<li><img src="images/6.jpg" /></li>
+    	<li><img src="images/7.gif" /></li>
+    	<li><img src="images/8.gif" /></li>
+    	<li><img src="images/9.gif" /></li>
+    	<li><img src="images/10.gif" /></li>
+    </ul>
+</div>
+</body>
+</html>

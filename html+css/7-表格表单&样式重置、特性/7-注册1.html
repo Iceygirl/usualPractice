@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ body,form,input,select,p { margin:0; padding:0; font-size:14px; font-family:"微软雅黑";}
+ a { text-decoration:none; color:#000;}
+ .wrap { width:400px; height:300px; border:1px solid #000; margin:60px auto; position:relative;}
+ .wrap a { display:block; width:100px; height:20px; background:#CCC; position:absolute; top:30px; line-height:20px; text-align:center;}
+ .wrap .active { background:#30F; color:#fff;}
+ .wrap a:nth-child(1) { left:100px;}
+ .wrap a:nth-child(2) { left:200px;}
+ form { position:absolute; left:40px; top:70px;}
+ form span {}
+ #form1 { }
+ #form2 { display:none;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+    <a href="#" class="active">邮箱注册</a>
+    <a href="#">手机号注册</a>
+    <form action="" method="post" id="form1">
+        <strong><span>*</span>邮件地址</strong>
+        <input type="text" value="建议用手机号注册" name="emial"/>@
+        <select name="address">
+            <option>163.com</option>
+            <option>qq.com</option>
+            <option>xn.com</option>
+        </select><br/>
+        <p>文字文字作为文字文字作为</p>
+        <strong><span>*</span>密码</strong>
+        <input tyoe="password" name="password"/>
+        <p>文字文字文字文字文字文字</p>
+        <strong><span>*</span>验证码</strong>
+        <input type="text"/><br/>
+        <input type="checkbox" />文字文字为文字文字文字为文字<br/>
+        <input type="submit" value="立即注册"/>
+    </form>
+    <form action="" method="post" id="form2">
+        <strong><span>*</span>手机号</strong>
+        <input tyoe="text" name="phone"/>
+        <p>文字文字文字文字文字文字</p>
+        <input type="submit" value="立即注册"/>
+    </form>
+</div>
+</body>
+</html>

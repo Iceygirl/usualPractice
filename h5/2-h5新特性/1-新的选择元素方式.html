@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	 
+	//var oDiv = document.querySelector('div');
+	//var oDiv = document.querySelector('#div');
+	//var oDiv = document.querySelector('.box');
+	//var oDiv = document.querySelector('[title = hello]');
+	//aDiv.style.background = 'red'; 
+	
+	//var oDiv = document.querySelector('.box');//只能选到一组元素中的第一个
+	
+	//var aDiv = document.querySelectorAll('.box');
+	//alert(aDiv.length);
+	
+	var aDiv = document.getElementsByClassName('box');
+	alert(aDiv.length);
+	
+	/*新增三种：
+	1、querySelector();
+	2、querySelectorAll();
+	3、getElementsBycClassName();*/
+ };
+</script>
+</head>
+
+<body>
+<div id="div" class="box" title="hello">div1</div>
+<div class="box">div2</div>
+</body>
+</html>

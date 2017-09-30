@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+var p1 = {
+	name:'zmx',
+	sex:'女',
+	showName:function (){
+		alert('我的名字是：'+this.name);
+	},
+	showSex:function (){
+		alert('我是'+this.sex+'生');
+	}
+};
+
+var p2 = {
+	name:'zxe',
+	sex:'女',
+	showName:function (){
+		alert('我的名字是：'+this.name);
+	},
+	showSex:function (){
+		alert('我是'+this.sex+'生');
+	}
+};
+p1.showName();
+p2.showSex();
+
+//js的所有东西都可以用json形式来实现
+//这种方式创建多个对象的话不好，命名空间一般采用这种
+</script>
+</head>
+<body>
+</body>
+</html>

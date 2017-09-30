@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>热区</title>
+<base target="_blank" />
+</head>
+<body>
+<img src="bigptr.jpg" usemap="#Map" border="0"/>
+<map name="Map" id="Map">
+  <area shape="circle" coords="280,155,38" href="http://www.baidu.com" />
+  <area shape="rect" coords="465,161,562,213" href="http://www.baidu.com" />
+  <area shape="poly" coords="224,252,182,223,163,231,152,243,147,256,145,270,141,287,149,304,157,321,176,337,192,346,212,336,223,327,234,316,233,296,231,275,225,256" href="http://www.baidu.com" />
+</map>
+<!--
+	热区只是图片的某个区域可以点击
+	map：热区
+    area:点击区域
+    shape="circle"：圆形 coords="280,155,38":圆心点X,圆心点Y,圆心半径
+    shape="rect"：矩形 coords="465,161,562,213"：矩形左上角X，矩形最上角Y,矩形右上角X，矩形右上角Y
+    shape="poly":多边形 第一个点X，第一个点Y，第二个点X，第二个点Y
+-->
+</body>
+</html>

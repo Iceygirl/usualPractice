@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>定位问题-绝对</title>
+		<style>
+			body{margin:0;}
+			.box1{width:303px;height:303px;border:2px solid black;position:relative;}
+			.box2{width:50px;height:50px;background:green;position:absolute;right:-1px;bottom:-1px;}
+			/*
+			在ie6下定位元素的父级宽高都为奇数，那么定位元素的位置控制的right和bottom都有1px的偏差.
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<div class="box2"></div>
+		</div>
+	</body>
+</html>

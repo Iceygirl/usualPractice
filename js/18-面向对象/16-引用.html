@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+/*
+var arr1 = [1,2,3];
+var arr2 = arr1;
+arr2.push(4);
+alert('1:'+arr1);	//1:1,2,3,4
+alert('2:'+arr2);	//2:1,2,3,4
+js中所有的对象都是引用，arr2和arr1都指向同一个数组的内存地址,arr2改变了数组的内存空间，arr1也是指向同一内存空间,因此arr1也会改变
+*/
+
+var arr1 = [1,2,3,4];
+var arr2 = [];
+for(var i in arr1){
+	arr2[i] = arr1[i];
+}
+arr2.push(5);
+alert('1:'+arr1);
+alert('2:'+arr2);
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script>
+
+
+
+
+alert( isNaN( function(){ alert(1) } ) );		//true
+alert( isNaN('250') );							//false
+alert( isNaN( [] ) );							//false
+
+/*
+	isNaN首先会调用Number(),用来判断某些值是不是数字, 讨厌数字
+	isNaN();结果是true或者false
+*/
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

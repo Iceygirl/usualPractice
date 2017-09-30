@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+function aaa (){
+	alert('a');
+}
+
+function bbb (){
+	alert('b');
+}
+
+function addEvent(obj,sEvent,fn){
+	if(obj.attachEvent){
+		obj.attachEvent('on'+sEvent,fn);
+	} else {
+		obj.addEventListener(sEvent,fn);
+	}
+}
+
+window.onload = function (){
+	var oBtn = document.getElementsByTagName('input')[0];
+	
+	addEvent(oBtn,'click',aaa);
+	addEvent(oBtn,'click',bbb);
+	
+	/*
+	oBtn.onclick = aaa;
+	oBtn.onclick = bbb;
+	
+	
+	oBtn.attachEvent('onclick',aaa);
+	oBtn.attachEvent('onclick',bbb); //弹出a,之后弹出b
+	
+	oBtn.addEventListener('click',aaa,false);
+	oBtn.addEventListener('click',bbb,false);
+	
+	
+	事件绑定：同一事件添加几个函数的时候可以用这个做到
+	IE:obj.attachEvent(事件，函数)；
+	FF,Chrome:obj.addEventListener(事件，函数，是否捕获);
+	
+	*/
+};
+</script>
+</head>
+<body>
+<input type="button" value="按钮"/>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	window.onload = function (){
+		var aBtn = document.getElementsByTagName ('input');
+		var str='';
+		//alert(aBtn.length);
+		for(var i=0;i<200;i++){
+			str += '<input type="button" value="你好"/>';
+		}
+		document.body.innerHTML = str;
+		alert(aBtn.length);
+	};
+	
+	
+	/*
+		获取元素的第三种方法：
+			document.title = '获取元素';
+			document.body.innerHTML = '123'
+		//document.getElementsByTagName('body')[0].innerHTML = '123';
+		
+		
+		1.重复执行某些代码
+	    2.每次执行的时候，有个数字在变化
+		有以上两种情况的话，可以用循环
+	*/
+</script>
+</head>
+
+<body>
+</body>
+</html>

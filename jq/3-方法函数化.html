@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	$('.box').click(function(){
+		alert($(this).html());	
+	}); 
+ });
+ 
+/* 方法函数化：
+ window.onload = function (){}
+ $(function (){});
+ 则在JQ中有封装一个函数 function $(){}
+ 
+ oDiv.innerHTML
+ $('div').html()
+ 则在JQ中与封装一个函数 function html(){}
+ 
+ oDiv.onclick = function(){}
+ $('div').click(){}
+ 则在JQ中有封装一个函数 function click(){}*/
+</script>
+</head>
+
+<body>
+<div class="box">aaa</div>
+</body>
+</html>

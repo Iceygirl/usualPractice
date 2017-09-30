@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+table { border-collapse:collapse;}
+td { width:100px;}
+</style>
+<script>
+window.onload = function (){
+	var oTab = document.getElementById('tab');
+	var oBtn = document.getElementById('btn');
+	var oTxt = document.getElementById('txt');
+	var sValueInTab = '';
+	var sValueInTxt = '';
+	var arr = [];
+	
+	for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+		oTab.tBodies[0].rows[i].style.background = i%2 ?'#ccc':'';
+	}
+	
+	oBtn.onclick = function (){
+		
+		for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+			sValueInTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+			sValueInTxt = oTxt.value.toLowerCase();
+			
+			arr = sValueInTxt.split(' ');
+			var bFound = false;
+			
+			for(var j=0;j<arr.length;j++){
+				if(sValueInTab.search(arr[j]) != -1){
+					bFound = true;
+					break;
+				}
+			}
+			
+			if(bFound){
+				oTab.tBodies[0].rows[i].style.background = 'yellow';
+			} else {
+				oTab.tBodies[0].rows[i].style.background = i%2?'#ccc':'';
+			}
+			
+		}
+		oTxt.value = '';
+	};
+};
+//隔行变色，忽略大小写，模糊查询
+</script>
+</head>
+<body>
+<input id="txt" type="text"/>
+<input id="btn" type="button" value="搜索"/>
+<table id="tab" border="1">
+	<thead>
+		<td>ID</td>
+		<td>姓名</td>
+		<td>操作</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>zmx</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>zxe</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>zmt</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>zkx</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>zyb</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ body { background:#000; margin:0;}
+ #c1 { background:#fff;}
+ div { width:600px;background:#fff; margin:20px auto;}
+</style>
+<script>
+ window.onload = function (){
+	var oC = document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	var i =0;
+	
+	var yImg = new Image();
+	yImg.onload = function (){
+		
+		setInterval(function (){
+		
+		oGC.clearRect(0,0,oC.width,oC.height);
+		
+		//黑色小球在图中的运动轨迹
+		oGC.beginPath();
+		oGC.arc(300,200,200,-90*Math.PI/180,180*Math.PI/180,false);
+		oGC.stroke(); 
+		
+		oGC.beginPath();
+		oGC.arc(250,200,150,180*Math.PI/180,360*Math.PI/180,false);
+		oGC.stroke();
+		
+		oGC.beginPath();
+		oGC.arc(400,200,20,0,360*Math.PI/180,false);
+		oGC.stroke();
+		
+		//画出黑色的小球
+		for(var i=0;i<ball.length;i++){
+			oGC.beginPath();
+			oGC.arc(ball[i].x,ball[i].y,20,0,360*Math.PI/180,false);
+			oGC.closePath();
+			oGC.fill();	
+		}
+		
+		//画出红色的小球
+		for(var i=0;i<bullet.length;i++){
+			
+			oGC.save();
+			oGC.beginPath();
+			oGC.fillStyle = 'red';
+			oGC.arc(bullet[i].x,bullet[i].y,20,0,360*Math.PI/180,false);
+			oGC.closePath();
+			oGC.fill();
+			oGC.restore();	
+		}
+		
+		//中间的小青蛙
+		oGC.save();
+		oGC.translate(300,200);
+		oGC.rotate(iRotate);
+		oGC.translate(-40,-40);
+		oGC.drawImage(yImg,0,0);
+		oGC.restore();
+		
+		oGC.save();
+		oGC.font = '50px impact';
+		oGC.textBaseline = 'top';
+		oGC.fillStyle = 'red';
+		oGC.shadowOffsetX = 10;
+		oGC.shadowOffsetY = 10;
+		oGC.shadowColor = 'green';
+		oGC.shadowBlur = 5;
+		var w = oGC.measureText('简易小游戏').width;
+		oGC.fillText('简易小游戏',(oC.width-w)/2,450);
+		oGC.restore();
+		
+	},1000/60);
+	
+		//黑色小球沿圆的轨迹运动
+		setInterval(function (){
+			
+			//黑色小球的坐标确定
+			for(var i=0;i<ball.length;i++){
+				ball[i].num++;
+				
+				if(ball[i].num == 270){
+					ball[i].r = 150;
+					ball[i].startX = 250;
+					ball[i].startY = 50;	
+				}
+				
+				if(ball[i].num == 270+180){
+					alert('游戏结束');
+					window.location.reload();	
+				}
+				
+				ball[i].x = Math.sin(ball[i].num*Math.PI/180)*ball[i].r+ball[i].startX;
+				ball[i].y = ball[i].r-Math.cos(ball[i].num*Math.PI/180)*ball[i].r+ball[i].startY;	
+			}
+			
+			//红色小球的坐标确定
+			for(var i=0;i<bullet.length;i++){
+				bullet[i].x = bullet[i].x +bullet[i].sX;
+				bullet[i].y = bullet[i].y +bullet[i].sY;	
+			}
+			
+			//两球相撞消去
+			for(var i=0;i<bullet.length;i++){
+				
+				for(j=0;j<ball.length;j++){
+					if( pz(bullet[i].x,bullet[i].y,ball[j].x,ball[j].y)){
+						bullet.splice(i,1);
+						ball.splice(j,1);
+						break;	
+					}
+				}
+
+			}
+		},30);
+		
+		//生成存放黑色小球的数组
+		var ball = [];
+		ball[0] = {
+			x:300,
+			y:0,
+			r:200,
+			num:0,
+			startX:300,
+			startY:0
+		};
+		
+		
+		//生成多个黑色小球
+		setInterval(function (){
+			ball.push({
+				x:300,
+				y:0,
+				r:200,
+				num:0,
+				startX:300,
+				startY:0	
+			});
+		},350);
+	};
+	
+	yImg.src = 'person.png';
+	
+	
+	//鼠标移动小青蛙跟着旋转
+	var iRotate = 0;
+	oC.onmousemove = function (ev){
+		var oEvent = ev || event;
+		
+		var x = oEvent.clientX - oC.offsetLeft;
+		var y = oEvent.clientY - oC.offsetTop;
+		
+		var a = x - 300;
+		var b = y - 200;
+		var c = Math.sqrt(a*a+b*b);
+		
+		if(a>0 && b>0){
+			iRotate = Math.asin(b/c) +90*Math.PI/180;
+		} else if(a>0){
+			iRotate = Math.asin(a/c);	
+		}
+		
+		if(a<0 && b>0){
+			iRotate = -(Math.asin(b/c) +90*Math.PI/180);
+		} else if(a<0){
+			iRotate = Math.asin(a/c);	
+		}
+	};
+	
+	var bullet = [];
+	
+	//鼠标按下红色小球出来
+	oC.onmousedown = function (ev){
+		var oEvent = ev || event;
+		var x = oEvent.clientX -oC.offsetLeft;
+		var y = oEvent.clientY -oC.offsetTop;
+		
+		var a = x-300;
+		var b = y-200;
+		var c = Math.sqrt(a*a+b*b);
+		
+		var speed = 5;
+		
+		var sX = speed*a/c;
+		var sY = speed*b/c;
+		
+		bullet.push({
+			x:300,
+			y:200,
+			sX:sX,
+			sY:sY	
+		});
+	};
+	
+	//判断两球是否相撞
+	function pz(x1,y1,x2,y2){
+		var a = x2-x1;
+		var b = y2-y1;
+		var c = Math.sqrt(a*a+b*b);
+		if(c<40){
+		 	return true;	
+		} else {
+			return false;	
+		}
+	};
+ };
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<canvas id="c1" width="600" height="600"></canvas>
+</div>
+</body>
+</html>

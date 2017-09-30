@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script>
+
+
+// 课上小练习：
+// 随机产生 100 个从 0 ~ 1000 之间不重复的整数
+
+window.onload = function (){
+	var oBody = document.body; 
+	var arr = [];
+	var num = 0;
+	
+	for(var i=1;i<=100;i++){
+	 num = Math.round(Math.random()*1000);
+	 arr.push(num);	
+	}
+	oBody.innerHTML = arr;
+}
+
+
+// var str = 'aaasdlfjhasdlkfs';
+// indexOf('s') —— 为数组编写类似方法
+
+var arr = ['红','橙','黄','绿','黑'];
+alert(indexOf(arr,'黑'));
+
+function indexOf(Array,str){
+	var aStr = Array.join(',');
+	return aStr.indexOf(str);
+}
+
+/*alert( Math.round(3.4) );
+ 0，1 : Math.round(Math.random());
+ 0~10
+ alert( Math.round(Math.random()*10) );
+
+ 5~10
+ alert( Math.round( Math.random()*5 + 5 ) );
+
+ x ~ y
+var x = 3;
+var y = 49;
+ alert( Math.round( Math.random()*(y-x) + x ) );
+
+ 0~x
+ alert( Math.round( Math.random()*x) );
+
+ 1~x
+alert( Math.ceil( Math.random()*x) );*/
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

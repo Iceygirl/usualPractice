@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	window.onload =function (){
+		var aInp = document.getElementsByTagName('input');
+		var str = '';
+		var t = 0;
+		var timer =null;
+		
+		aInp[2].onclick = function (){
+			var iNew = new Date(aInp[0].value);
+			
+			setInterval(countDown,1000);
+			countDown();
+			
+			function countDown(){
+				var iNow = new Date();
+				t = Math.floor((iNew-iNow)/1000);
+				if(t>0){
+					str = Math.floor(t/86400) +'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+t%60+'秒';
+					aInp[1].value = str;
+				} else {
+					clearInterval(timer);	
+				}	
+			};
+		};
+	};
+</script>
+</head>
+
+<body>
+距离：<input type="text" value="May 20,2017 12:00:00" /><br/>
+还剩：<input type="text" />
+<input type="button" value="开始倒计时" />
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>兼容性问题16</title>
+		<style>
+			.box{width:200px;height:42px;border:1px solid red;background:yellow;background:url(ball.png) no-repeat;}
+			input{margin:0;padding:0;width:200px;height:42px;border:none;float:left;background:none;}
+			/*
+			
+			在ie6下输入类型表单控件输入文字的时候，背景图片会跟着一块儿动
+			解决方法：将背景加到父级身上，自己的背景为none,并且让父子两级的宽高一致
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<input type="text" name=""/>
+		</div>
+	</body>
+</html>

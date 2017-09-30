@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var oDiv = document.getElementById('div');
+	alert(oDiv.classList); //类似数组的对象
+	
+	oDiv.classList.add('box4');
+	oDiv.classList.remove('box4');
+	
+	oDiv.classList.toggle('box4');
+	oDiv.classList.toggle('box2');
+	
+	//toggle:如果存在的话就删除，如果不存在的话就增加
+ };
+</script>
+</head>
+
+<body>
+<div id="div" class="box1 box2 box3">div1</div>
+</body>
+</html>

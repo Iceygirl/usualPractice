@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body { text-align:center;}
+ img { display:none;}
+</style>
+<script>
+ window.onload = function (){
+	var oImg = document.getElementsByTagName('img')[0]; 
+	
+	setTimeout(function (){
+		oImg.style.display = 'inline-block';
+		setTimeout(function (){
+			oImg.style.display = 'none';
+		},2000);
+	},2000);
+ };
+</script>
+</head>
+
+<body>
+<img src="img4/3-3.jpg" />
+</body>
+</html>

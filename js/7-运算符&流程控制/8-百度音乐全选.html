@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,ul { margin:0; padding:0;}
+ li { list-style:none;}
+ 
+ #list { width:300px; margin:50px; border:1px solid #000;}
+ #list li { height:30px; line-height:30px; text-indent:10px; position:relative;}
+ #list .singer { position:absolute; left:170px;}
+ .all { position:absolute; top:240px; left:60px;}
+ 
+ .btn { width:60px; position:absolute; top:0; text-indent:16px; color:#999;}
+ .add { left:90px; background:url(img5/btn_bg.gif) no-repeat 6px -84px;}
+ .del{ left:160px; background:url(img5/btn_bg.gif) no-repeat 6px -106px;}
+ .save { left:230px; background:url(img5/btn_bg.gif) no-repeat 6px -84px;}
+ .addA { left:90px; background:url(img5/btn_bg.gif) no-repeat 6px -17px; color:#000; border:1px solid #000;}
+ .delA { left:160px; background:url(img5/btn_bg.gif) no-repeat 6px -38px; color:#000; border:1px solid #000;}
+ .saveA { left:230px; background:url(img5/btn_bg.gif) no-repeat 6px 6px; color:#000; border:1px solid #000;#}
+</style>
+<script>
+ window.onload = function (){
+	var oUl = document.getElementsByTagName('ul')[0]; 
+	var aLi = oUl.getElementsByTagName('li');
+	
+	var aCheckBox = oUl.getElementsByTagName('input');
+	var oAll = document.getElementsByTagName('div')[0];
+	var aInp = oAll.getElementsByTagName('input');
+	var all = aInp[0];
+	var oAdd = aInp[1];
+	var oDel = aInp[2];
+	var oSave = aInp[3];
+	
+	var arr = ['#cc6','#fff'];
+	var checkNum = 0;
+	var oPar = null;
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.background = arr[i%arr.length];
+		aLi[i].index = i;
+		aLi[i].onmouseover = function (){
+			this.style.background = '#ccc';
+		};
+		
+		aLi[i].onmouseout = function (){
+			if(!aCheckBox[this.index].checked){
+				this.style.background = arr[this.index%arr.length];
+			}
+		};
+		
+		aCheckBox[i].onclick = function (){
+			oPar = this.parentNode;
+			if(this.checked){
+				oPar.style.backgroundColor = '#ccc';
+				checkNum++;	
+			} else {
+				checkNum--;
+			}
+			
+			if(checkNum == aLi.length){
+				all.checked = true;	
+			} else {
+				all.checked = false;	
+			}
+			setBtn();
+		};
+		
+	}
+	
+	all.onclick = function (){
+		for(var i=0;i<aLi.length;i++){
+			if(this.checked){
+				aCheckBox[i].checked = true;
+				aLi[i].style.background = '#ccc';
+				checkNum = aLi.length;	
+			} else {
+				aCheckBox[i].checked = false;
+				aLi[i].style.background = arr[i%arr.length];
+				checkNum = 0;	
+			}
+		}
+		setBtn();
+	};
+		
+	
+	function setBtn(){
+		if(checkNum>0){
+			oAdd.className = 'btn addA';
+			oDel.className = 'btn delA';
+			oSave.className = 'btn saveA';	
+		} else {
+			oAdd.className = 'btn add';
+			oDel.className = 'btn del';
+			oSave.className = 'btn save';
+		}
+	};
+	setBtn();
+ };
+</script>
+</head>
+
+<body>
+<ul id="list">
+	<li>
+    	<input type="checkbox" class="checkbox"/>
+        <span class="name">私奔</span>
+        <span class="singer">梁博</span>
+    </li>
+    <li>
+    	<input type="checkbox" class="checkbox"/>
+        <span class="name">北京北京</span>
+        <span class="singer">汪峰</span>
+    </li>
+    <li>
+    	<input type="checkbox" class="checkbox"/>
+        <span class="name">只要有你</span>
+        <span class="singer">那英</span>
+    </li>
+    <li>
+    	<input type="checkbox" class="checkbox"/>
+        <span class="name">存在</span>
+        <span class="singer">邓紫棋</span>
+    </li>
+    <li>
+    	<input type="checkbox" class="checkbox"/>
+        <span class="name">刚好遇见你</span>
+        <span class="singer">李玉刚</span>
+    </li>
+    <li>
+    	<input type="checkbox" />
+        <span class="name">凉凉</span>
+        <span class="singer">张碧晨，杨宗纬</span>
+    </li>
+</ul> 
+	<div class="all">   
+        <input type="checkbox" class="checkbox" />
+        <span>全选</span>
+        <input type="button" value="添加" class="btn add" />
+        <input type="button" value="删除" class="btn del" />
+        <input type="button" value="收藏" class="btn save" />
+    </div>
+
+</body>
+</html>

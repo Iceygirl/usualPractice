@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="json2.js"></script>
+<script>
+/* var a = { 'name':'zmx'};
+ var b = a;
+ b.name = 'haha';
+ alert(a.name);    //haha*/
+ 
+ /*var a = { 'name':'zmx'};
+ var b = {};
+ for(var attr in a){
+	b[attr] = a[attr]; 
+ }
+ b.name = 'haha';
+ alert(a.name);      //视频 : 对象的引用*/
+ 
+ var a ={ 'name':{ 'age':'18'}};
+ var str = JSON.stringify(a);
+ var b = JSON.parse(str);
+ b.name.age = '22';
+ alert(a.name.age); 
+   
+ /*
+	 深度克隆新对象，如何其他浏览器做到兼容
+	http://www.json.org/去下载json2.js
+*/
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

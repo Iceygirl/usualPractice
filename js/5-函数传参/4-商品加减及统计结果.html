@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var oUl = document.getElementsByTagName('ul')[0]; 
+	var aLi = oUl.getElementsByTagName('li');
+	
+	for(var i=0;i<aLi.length;i++){
+		fnOparate(aLi[i]);	
+	}
+	
+	function fnOparate(obj){
+		
+		var aInp = obj.getElementsByTagName('input');
+		var oSub = aInp[0];
+		var oAdd = aInp[1];
+		var oNum = obj.getElementsByTagName('strong')[0];
+		var oPrice = obj.getElementsByTagName('span')[0];
+		var oSubtotal = obj.getElementsByTagName('em')[0];
+		var num = parseInt(oNum.innerHTML);
+		var price = parseFloat(oPrice.innerHTML);
+		
+		oSub.onclick = function (){
+			num--;
+			if(num ==-1){
+				num = 0;	
+			}
+			oNum.innerHTML = num;
+			oSubtotal.innerHTML = price*num+'元';
+			statistics();		
+		};
+		
+		oAdd.onclick = function (){
+			num++;
+			oNum.innerHTML = num;
+			oSubtotal.innerHTML = price*num+'元';
+			statistics();		
+		};
+	};
+	
+	function statistics(){
+		
+		var oP = document.getElementsByTagName('p')[0];
+		var aSpan = oP.getElementsByTagName('span');
+		var oTnum = aSpan[0];
+		var oTsum = aSpan[1];
+		var oTprice = aSpan[2];
+		var tNum = 0;
+		var tSum = 0;
+		var maxPrice = [];
+		
+		for(var i=0;i<aLi.length;i++){
+			var oNum = aLi[i].getElementsByTagName('strong')[0];
+			var oPrice = aLi[i].getElementsByTagName('span')[0];
+			var oSubtotal = aLi[i].getElementsByTagName('em')[0];	
+			
+			tNum+=parseInt(oNum.innerHTML);
+			tSum+=parseFloat(oSubtotal.innerHTML);
+			
+			if(parseInt(oNum.innerHTML)){
+				maxPrice.push(parseFloat(oPrice.innerHTML));	
+			}
+		}
+		
+		maxPrice.sort(function (a,b){
+			return b-a;	
+		});
+		
+		if(tNum == 0){
+			maxPrice[0] = 0;	
+		}
+		
+		oTnum.innerHTML = tNum +'件';
+		oTsum.innerHTML = tSum+'元';
+		oTprice.innerHTML = maxPrice[0]+'元';
+		
+		
+	};
+ };
+</script>
+</head>
+
+<body>
+<ul>
+	<li>
+    	<input type="button" value="-" />
+        <strong>0</strong>
+        <input type="button" value="+" />
+        单价：<span>1元</span>
+        小计:<em>0元</em>
+    </li>
+	<li>
+    	<input type="button" value="-" />
+        <strong>0</strong>
+        <input type="button" value="+" />
+        单价：<span>4元</span>
+        小计:<em>0元</em>
+    </li>
+	<li>
+    	<input type="button" value="-" />
+        <strong>0</strong>
+        <input type="button" value="+" />
+        单价：<span>2元</span>
+        小计:<em>0元</em>
+    </li>
+	<li>
+    	<input type="button" value="-" />
+        <strong>0</strong>
+        <input type="button" value="+" />
+        单价：<span>5元</span>
+        小计:<em>0元</em>
+    </li>
+</ul>
+<p>
+商品合计共：<span>0件</span><br />
+商品总计共:<span>0元</span>，其中最贵的商品单价是:<span>0元</span></p>
+</body>
+</html>

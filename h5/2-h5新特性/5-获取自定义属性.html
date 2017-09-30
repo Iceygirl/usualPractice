@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var oDiv = document.getElementById('div');
+	alert(oDiv.dataset.index); 
+	alert(oDiv.dataset.indexAll);
+ };
+</script>
+</head>
+
+<body>
+<div id="div" data-index = '1' data-index-all="12">div1</div>
+</body>
+</html>

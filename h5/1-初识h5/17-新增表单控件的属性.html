@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<form action="17-新增表单控件的属性.html">
+
+	<input type="text" placeholder="请填入用户名" name="username" autocomplete="off" required  pattern="\d{1,5}" /><br/>
+    
+    <input type="password" placeholder="请输入密码" name="password" autocomplete="off" autofocus/><br/>
+    
+    <input type="submit" value="提交" />
+    
+    <input type="submit" value="保存至草稿箱" formaction="15-新增表单控件1.html"/>
+</form>
+<!-- 1.placeholder:输入框提示信息
+    	例子:微博的密码框提示
+     2.autocomplete:是否保存用户输入值
+    	默认为on，关闭提示选择off
+     3.autofocus:指定表单获取输入焦点
+
+     4.required:此项必填，不能为空
+     5.pattern : 正则验证  pattern="\d{1,5}“
+     6.formaction 在submit里定义提交地址
+-->
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+<ul>
+	<li class="box">1</li>
+	<li>2</li>
+	<li class="box">3</li>
+	<li title="hello">4</li>
+	<li title="hello">5</li>
+</ul>
+<script>
+ //$('li').css('background','red');
+ //$('li:eq(2)').css('background','red');
+ //$('li:even').css('background','red');
+ //$('li:odd').css('background','red');
+ 
+ //$('li').filter('.box').css('background','red');
+ $('li').filter('[title=hello]').css('background','red');
+ 
+</script>
+</body>
+</html>

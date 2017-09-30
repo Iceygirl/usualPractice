@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var oBtn = document.getElementsByTagName('input')[0];
+	var oUl = document.getElementsByTagName('ul')[0];
+	var oFrag = document.createDocumentFragment();
+	
+	oBtn.onclick = function (){
+		
+		var tStart = new Date().getTime();
+		
+		for(var i=0;i<100000;i++){
+		   var oLi = document.createElement('li');
+		   oFrag.appendChild(oLi);	
+		}
+		
+		oUl.appendChild(oFrag);
+		
+		alert(new Date().getTime()-tStart);
+	};
+ };
+</script>
+</head>
+
+<body>
+<input type="button" value="创建" />
+<ul></ul>
+</body>
+</html>

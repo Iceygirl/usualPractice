@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#box1{ width:100px; height:100px; position:absolute; background:red;}
+.dragDiv { width:100px; height:100px; position:absolute; background:red; filter:alpha("opacity=50"); opacity:0.5;}
+</style>
+<script>
+window.onload = function (){
+	drag('box1');
+	
+	function drag(id){
+		var oDiv = document.getElementById(id);
+		var disX=0, disY=0;
+		
+		oDiv.onmousedown = function (ev){
+			var oEvent = ev || event;
+			disX = oEvent.clientX - oDiv.offsetLeft;
+			disY = oEvent.clientY - oDiv.offsetTop;
+			
+			var oOldDiv = document.createElement('div');
+			oOldDiv.style.left = oDiv.offsetLeft + 'px';
+			oOldDiv.style.top = oDiv.offsetTop + 'px';
+			oOldDiv.className = 'dragDiv';
+			document.body.appendChild(oOldDiv);
+			
+			document.onmousemove = function (ev){
+				var oEvent = ev || event;
+				
+				oDiv.style.left = oEvent.clientX - disX + 'px';
+				oDiv.style.top = oEvent.clientY - disY + 'px';
+				
+			}
+			
+			document.onmouseup = function (){
+				document.onmousemove = null;
+				document.onmouseup = null;
+				
+				document.body.removeChild(oOldDiv);
+			}
+			
+			return false;
+		}
+	}
+};
+</script>
+</head>
+<body>
+<div id="box1">1</div>
+</body>
+</html>

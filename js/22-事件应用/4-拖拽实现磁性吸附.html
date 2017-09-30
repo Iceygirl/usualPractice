@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#box1 { width:100px; height:100px; position:absolute; background:yellow;}
+</style>
+<script>
+//实现磁性吸附，并解决Ie8以下文字选中的兼容性问题
+window.onload = function (){
+	var oDiv = document.getElementById('box1');
+
+	var disX = 0;
+	var disY = 0;
+	oDiv.onmousedown = function (ev){
+		var oEvent = ev || event;
+		 
+		disX = oEvent.clientX - oDiv.offsetLeft;
+		disY = oEvent.clientY - oDiv.offsetTop;
+		
+		if(oDiv.setCapture){
+				
+			oDiv.onmousemove = fnMove;
+			
+			oDiv.onmouseup = fnUp;
+			
+			oDiv.setCapture();
+		}
+		else {
+				
+			document.onmousemove = fnMove;
+			document.onmouseup = fnUp;
+		}
+		
+		return false; //阻止会默认选中文字的默认事件，在Ie9一下版本任然会有这个问题存在
+	};
+	
+function fnMove(ev) {
+	var oEvent = ev || event;
+	var l = oEvent.clientX - disX;
+	var t = oEvent.clientY - disY;
+	
+	if(l<50){
+		l=0;
+	}
+	else if(l>document.documentElement.clientWidth-oDiv.offsetWidth-50){
+		l=document.documentElement.clientWidth-oDiv.offsetWidth;
+	} 
+	
+	if(t<50){
+		t=0;
+	}
+	else if(t>document.documentElement.clientHeight-oDiv.offsetHeight-50){
+		t=document.documentElement.clientHeight-oDiv.offsetHeight;
+	}
+	oDiv.style.left =  l + 'px';
+	oDiv.style.top =  t + 'px';
+	
+}
+
+function fnUp () {
+	this.onmousemove = null;
+	this.onmouseup = null;
+	
+	if(this.releaseCapture){
+		this.releaseCapture();
+	}
+	
+}
+
+};
+</script>
+</head>
+<body>
+eafaf
+<div id="box1">afgsgfs</div>
+sggvbbg
+</body>
+</html>

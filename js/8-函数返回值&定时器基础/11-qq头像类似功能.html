@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ #qq { width:150px; height:400px; background:#CCC; position:relative;}
+ #mess { width:180px; height:100px; background:#666; position:absolute; top:10px; left:170px; display:none;}
+</style>
+<script>
+ function $(v){
+	if(typeof v == 'function'){
+		window.onload = v;	
+	} else if(typeof v == 'string'){
+		return document.getElementById(v);	
+	} else if(typeof v == 'object'){
+		return obj;	
+	}
+ };
+ 
+ $(function (){
+	 var oQq = $('qq');
+	 var oMess = $('mess');
+	 var timer = null;
+	 
+	 function show(){
+		clearTimeout(timer);
+		oMess.style.display = 'block';	 
+	 };
+	 
+	 function hide(){
+		 timer = setTimeout(function (){
+			oMess.style.display = 'none'; 
+		 },1000);
+	 };
+	 
+	 oQq.onmouseover = show;
+	 oQq.onmouseout = hide;
+	
+	 oMess.onmouseover = show;
+	 oMess.onmouseout = hide; 
+ });
+</script>
+</head>
+
+<body>
+<div id="qq"></div>
+<div id="mess"></div>
+</body>
+</html>

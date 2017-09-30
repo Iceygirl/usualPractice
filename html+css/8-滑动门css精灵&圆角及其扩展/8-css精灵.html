@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>css精灵</title>
+		<style>
+			div{width:100px;height:100px;background:url(bigptr.jpg);border:2px solid blue;float:left;margin-right:50px;display:inline;}
+			.box1{background-position:-141px -50px;}
+			.box2{background-position:-230px -107px;}
+			.box3{background-position:-472px -325px;}
+		    .box4{background-position:left bottom;}
+			/*
+			background-position:背景图在移动，若是坐标表示从下往上或者从右往左
+			background-position:right bottom;表示背景图的右边和下面显示在元素上
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ .box { width:800px; height:100px; border:3px solid #000; display:-webkit-box; padding:10px;}
+ .box div { height:100px;  background:#9C9; color:#fff; text-align:center; font:40px/100px '宋体'; border:1px solid #fff;}
+ .box div:nth-child(1) { -webkit-box-flex:1;}
+ .box div:nth-child(2) { -webkit-box-flex:2;}
+ .box div:nth-child(3) { -webkit-box-flex:3;}
+ .box div:nth-child(4) { -webkit-box-flex:4;}
+ .box div:nth-child(5) { -webkit-box-flex:5;}
+ .box div:nth-child(6) { -webkit-box-flex:6;}
+ 
+ /*
+ 	-webkit-box-flex:定义盒子的弹性空间
+	子元素的尺寸=盒子的尺寸*子元素的box-flex属性值 / 所有子元素的box-flex属性值的和 
+
+*/
+</style>
+</head>
+
+<body>
+<div class="box">
+	<div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+</div>
+</body>
+</html>

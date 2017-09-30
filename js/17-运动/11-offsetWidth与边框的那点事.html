@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ div { width:80px; height:80px; background:#0C9; border:1px solid black;}
+</style>
+<script>
+ setInterval(function (){
+	var oDiv = document.getElementsByTagName('div')[0];
+	oDiv.style.width = oDiv.offsetWidth-1+'px';
+ },30);
+ 
+ /*当加上边框的时候，width在不断地增加
+ width:100px; offsetWidth:102px;  width:101px
+ width:101px; offsetWidth:103px;  width:102px;
+ width:102px; offsetWidth:104px;  width:103px;
+ ...*/
+</script>
+</head>
+
+<body>
+<div></div>
+</body>
+</html>

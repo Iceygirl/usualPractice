@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta chsrset="utf-8"/>
+		<title>important</title>
+		<style>
+			.box{width:200px;height:200px;background:red !important;background:pink;}
+			/*
+			ie6下，在important后面再加一条同样的样式，会破坏important的作用，按照原先默认的优先级。
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="box" style="background:#000;"></div>
+	</body>
+</html>

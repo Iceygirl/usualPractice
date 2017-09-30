@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	//alert($('.box').html()); 
+	
+	/*$('.box').html('hello');
+	alert($('.box').html());*/
+	
+	/*$('.box').css('background','red');
+	alert($('.box').css('backgroundColor'));*/
+	
+	alert($('li').html());  //当有一组元素，取第一个的值
+	$('li').html('hello');  //当有一组元素，赋值所有的元素
+ });
+</script>
+</head>
+
+<body>
+<div class="box">aaa</div>
+
+<ul>
+	<li>aaa</li>
+    <li>bbb</li>
+    <li>ccc</li>
+    <li>ddd</li>
+    <li>fff</li>
+</ul>
+</body>
+</html>

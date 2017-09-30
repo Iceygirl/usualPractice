@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>选择符优先级</title>
+		<style>
+			li{
+				background:green;
+			}
+			ol li{
+				background:blue;
+			}
+			.list1{
+				background:red;
+			}
+			#list1{
+				background:blue;
+			}
+		</style>
+		/* 
+		
+		同样的样式后者会覆盖前者
+		
+		选择符的优先级顺序:
+		类型<class<id<行间样式<js
+		
+		选择符使用原则：能准确地选中元素，又不影响其他元素
+		*/
+	</head>
+	<body>
+		<ol>
+			<li class="list1" id="list1" style="background:purple;"></li>
+			<li ></li>
+			<li></li>
+		</ol>
+		<script>
+			document.getElementById("list1").style.background="red";
+		</script>
+	</body>
+</html>

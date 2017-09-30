@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var oUl = document.getElementsByTagName('ul')[0]; 
+	var oBtn = document.getElementsByTagName('input')[0];
+	var arr = [
+		'山西省委附近多次爆炸 官方称尚不确定是恐怖袭击',
+		'甘肃张掖明令禁止转基因 书记:无力辨别只能禁止',
+		'多地制定雾霾预案限行限排被批治标不治本',
+		'韩媒抱怨中国雾霾侵袭韩国 称其为"黑色灾难" ',
+		'伊朗革命卫队高官在叙利亚当"志愿者"被杀(图)'
+	];
+	var onOff = true;
+	
+	oBtn.onclick = function (){
+		if(onOff){
+			for(var i=0;i<arr.length;i++){
+				oUl.innerHTML += '<li>'+arr[i]+'</li>';  
+			}
+		}
+		onOff = false;
+	};
+ };
+</script>
+</head>
+
+<body>
+<input type="button" value="自动生成5条新闻" />
+<ul style="border:1px solid #000;"></ul>
+</body>
+</html>

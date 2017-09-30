@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+window.onload = function (){
+	var oImg = new Image();
+	oImg.onload = function (){
+		alert('图片预加载成功');
+	}
+	
+	oImg.onerror = function (){
+		alert('失败');
+	}
+	
+	oImg.src="http://img4.imgtn.bdimg.com/it/u=3624185092,1260088468&fm=11&gp=0.jpg";
+	
+};
+</script>
+</head>
+<body>
+<img src="http://img5.imgtn.bdimg.com/it/u=1419769930,50996527&fm=200&gp=0.jpg" onmouseover="this.src='http://img4.imgtn.bdimg.com/it/u=3624185092,1260088468&fm=11&gp=0.jpg';" onmouseout="this.src='http://img5.imgtn.bdimg.com/it/u=1419769930,50996527&fm=200&gp=0.jpg';" />
+</body>
+</html>

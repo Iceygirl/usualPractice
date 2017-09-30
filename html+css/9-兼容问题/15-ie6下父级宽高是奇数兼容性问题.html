@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>兼容性问题11</title>
+		<style>
+			body{margin:0;}
+			.box{width:201px;height:201px;border:1px solid black;position:relative;}
+			.box span{width:20px;height:20px;background:yellow;position:absolute;right:-1px;bottom:-1px;}
+			/*
+			在ie6下绝对定位的父级宽高是奇数的话，元素的right值和bottom值会有1px的偏差
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<span></span>
+		</div>
+	</body>
+</html>

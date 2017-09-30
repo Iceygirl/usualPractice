@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ body,ul,p { margin:0; padding:0;}
+ li { list-style:none;}
+ img { border:none; vartical-align:top;}
+ 
+ ul { width:848px; height:250px; margin-top:20px;}
+ li { float:left; width:200px; height:250px; margin-right:10px; border:1px solid #000;}
+ img { width:200px; height:200px;}
+ li p { text-align:center;}
+ 
+ #div1 { width:500px; height:200px; border:1px solid #000; margin-top:20px; clear:both;}
+ .box1 { float:left; width:100px;}
+ .box2 { float:left; width:200px;}
+ .box3 { float:left; width:200px;}
+ #allMoney { float:right;}
+</style>
+<script>
+ window.onload = function (){
+	var oUl = document.getElementsByTagName('ul')[0]; 
+	var aLi = oUl.getElementsByTagName('li');
+	var oDiv = document.getElementsByTagName('div')[0]; 
+	var obj = {};
+	var allMoney = null;
+	var iNum = 0;
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].ondragstart = function (ev){
+			var aP = this.getElementsByTagName('p');
+			ev.dataTransfer.setData('title',aP[0].innerHTML);
+			ev.dataTransfer.setData('money',aP[1].innerHTML);
+			ev.dataTransfer.setDragImage(this,0,0);
+		};
+	}
+	
+	oDiv.ondragover = function (ev){
+		ev.preventDefault();
+	};
+	
+	oDiv.ondrop = function (ev){
+		ev.preventDefault();
+		
+		var sTitle = ev.dataTransfer.getData('title');
+		var sMoney = ev.dataTransfer.getData('money');
+		
+		if(!obj[sTitle]) { //看之前有没有出现在json中，sTitle是唯一标识
+			var oP = document.createElement('p');
+			var oSpan = document.createElement('span');
+			oSpan.className = 'box1';
+			oSpan.innerHTML = 1;
+			oP.appendChild(oSpan);
+			
+			var oSpan = document.createElement('span');
+			oSpan.className = 'box2';
+			oSpan.innerHTML = sTitle;
+			oP.appendChild(oSpan);
+			
+			var oSpan = document.createElement('span');
+			oSpan.className = 'box3';
+			oSpan.innerHTML = sMoney;
+			oP.appendChild(oSpan);
+			
+			oDiv.appendChild(oP);
+			obj[sTitle] = 1;
+			
+		} else {
+			var box1 = document.getElementsByClassName('box1');
+			var box2 = document.getElementsByClassName('box2');
+			
+			for(var i=0;i<box2.length;i++){
+				if(box2[i].innerHTML == sTitle){
+					box1[i].innerHTML = parseInt(box1[i].innerHTML)+1;	
+				}
+			}
+		}
+		if(!allMoney){
+			allMoney = document.createElement('div');
+			allMoney.id = 'allMoney';
+		}
+		iNum += Number(sMoney.substring(1));
+		allMoney.innerHTML = '￥' + iNum ;
+		oDiv.appendChild(allMoney);
+	};
+	
+ };
+</script>
+</head>
+
+<body>
+<ul>
+	<li draggable="true">
+    	<img src="img/img1.jpg" />
+        <p>javascript语言精粹</p>
+        <p>￥45</p>
+    </li>
+	<li draggable="true">
+    	<img src="img/img2.jpg" />
+        <p>javascript权威指南</p>
+        <p>￥90</p>
+    </li>
+	<li draggable="true">
+    	<img src="img/img3.jpg" />
+        <p>精通javascript</p>
+        <p>￥35</p>
+    </li>
+	<li draggable="true">
+    	<img src="img/img4.jpg" />
+        <p>javascript dom编程艺术</p>
+        <p>￥50</p>
+    </li>
+</ul>
+<div id="div1">
+ 	<p>
+    	<span class="box1">数量</span>
+        <span class="box2">商品名</span>
+        <span class="box3">价格</span>
+    </p>
+<!--    <p>
+    	<span class="box1">1</span>
+        <span class="box2">javascript语言精粹</span>
+        <span class="box3">￥45</span>
+    </p>
+    <p>
+    	<span class="box1">1</span>
+        <span class="box2">javascript权威指南</span>
+        <span class="box3">￥90</span>
+    </p>-->
+</div>
+</body>
+</html>

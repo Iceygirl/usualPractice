@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+.box{width:300px;height:300px;border:10px solid #000; /*background-image:-webkit-linear-gradient(60deg,red,blue);*/ 
+
+/*background-image:-webkit-linear-gradient(60deg,red,yellow,blue,red,green);*/
+
+/* background-image:-webkit-linear-gradient(60deg,red 0, green 50%,blue 100%);*/
+
+/* background-image:-webkit-linear-gradient(60deg,red 0,red 60px,blue 60px,blue 80px, green 80px);*/ 
+
+background-image:-webkit-linear-gradient(60deg,red 0,blue 60px,green 80px);}
+
+/*
+1.线性渐变格式：linear-gradient([<起点> || <角度>,]? <点>, <点>…)
+2.只能用在背景上
+3.兼容IE filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#ff0000',GradientType='1');
+
+参数
+	1.起点：从什么方向开始渐变，默认：top
+		   left、top、left top
+	2.角度：从什么角度开始渐变
+			xxx deg的形式
+	3.点：渐变点的颜色和位置
+			black 50%，位置可选
+			
+4.线性渐变实例
+	最简单:red, green  从上到下
+	起点位置:
+		--left top, red, green
+		--30deg, red, green
+			角度是逆时针
+	repeating-linear-gradient
+
+*/
+</style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

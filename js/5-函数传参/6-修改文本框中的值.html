@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,dl,dd { margin:0; padding:0;}
+ 
+ .list { width:300px; margin:50px auto; }
+ .list dt { height:40px; line-height:40px; text-indent:20px; background:#333; color:#fff; font-size:20px;}
+ .list dd { height:30px; line-height:30px; border:1px solid #000; border-top:none;}
+ .show { width:300px; height:30px; }
+ .show span { margin-left:6px;}
+ .show a { display:inline-block; width:16px; height:16px; background:url(img3/exit.png) no-repeat; margin-left:6px;}
+ .edit { width:300px; height:30px; display:none;}
+ .edit .text { margin-left:6px;}
+ .edit .btnSave,.edit .btnCancel { height:22px; line-height:26px; margin-left:4px;}
+</style>
+<script>
+ window.onload = function (){
+	var oList =  document.getElementsByTagName('dl')[0]; 
+	var aDd = oList.getElementsByTagName('dd');
+	
+	for(var i=0;i<aDd.length;i++){
+		fnOperate(aDd[i]);	
+	}
+	
+	function fnOperate(obj){
+		var aDiv = obj.getElementsByTagName('div');
+		var oShow = aDiv[0];
+		var oEdit = aDiv[1];
+		
+		var oSpan = oShow.getElementsByTagName('span')[0];
+		var oA = oShow.getElementsByTagName('a')[0];
+		var aInp = oEdit.getElementsByTagName('input');
+		var oText = aInp[0];
+		var oBtnSave = aInp[1];
+		var oBtnCancel = aInp[2];
+		
+		oA.onclick = function (){
+			oShow.style.display = 'none';
+			oEdit.style.display = 'block';
+		};
+		
+		oBtnSave.onclick = function (){
+			if(oText.value!=''){
+				oSpan.innerHTML = oText.value;
+			}
+			oEdit.style.display = 'none';
+			oShow.style.display = 'block';
+			oText.value = '';
+		};
+		
+		oBtnCancel.onclick = function (){
+			oEdit.style.display = 'none';
+			oShow.style.display = 'block';
+			oText.value = '';
+		};
+	};
+ };
+</script>
+</head>
+
+<body>
+<dl class="list">
+	<dt>分类名称</dt>
+    <dd>
+    	<div class="show">
+        	<span>科幻小说</span>
+            <a href="#"></a> 
+        </div>
+        <div class="edit">
+        	<input type="text" class="text"/>
+            <input type="button" value="保存" class="btnSave" />
+            <input type="button" value="取消" class="btnCancel"/>
+        </div>
+    </dd>
+    <dd>
+    	<div class="show">
+        	<span>言情小说</span>
+            <a href="#"></a> 
+        </div>
+        <div class="edit">
+        	<input type="text" class="text"/>
+            <input type="button" value="保存" class="btnSave" />
+            <input type="button" value="取消" class="btnCancel"/>
+        </div>
+    </dd>
+    <dd>
+    	<div class="show">
+        	<span>武侠小说</span>
+            <a href="#"></a> 
+        </div>
+        <div class="edit">
+        	<input type="text" class="text"/>
+            <input type="button" value="保存" class="btnSave" />
+            <input type="button" value="取消" class="btnCancel"/>
+        </div>
+    </dd>
+</dl>
+</body>
+</html>

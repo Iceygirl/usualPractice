@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	 
+	/*$('div').click(function(){
+		alert($(this).html());	
+	}); */
+	
+	
+	/*$('div').on('click',function (){
+		alert($(this).html());	
+	});*/
+	
+	
+	/*$('div').on('click mouseover',function (){
+		alert($(this).html());	
+	});*/
+	
+	
+	/*$('div').on({
+		'click': function (){
+			alert($('div').html());
+		},
+		'mouseover': function (){
+			alert(456);	
+		}
+	});*/
+	
+	$('div').on('click mouseover',function (){
+		alert(123);
+		$('div').off('mouseover');	
+	});
+ });
+</script>
+</head>
+
+<body>
+<div>111</div>
+</body>
+</html>

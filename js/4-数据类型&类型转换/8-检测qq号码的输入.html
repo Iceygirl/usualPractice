@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input'); 
+	var oText = aInp[0];
+	var oBtn = aInp[1];
+	
+	oBtn.onclick = function (){
+		var text = oText.value;
+		if(text == ''){
+			
+			alert('请输入QQ号码！');
+			oText.value = '';	
+			
+		} else if(isNaN(Number(text))){
+			
+			alert('只能输入数字');
+			oText.value = '';	
+			
+		} else if(text.charAt(0)==0){
+			
+			alert('前面不能有0！');
+			oText.value = '';	
+			
+		} else if(parseFloat(text)!=parseInt(text)){
+			
+			alert('不能是小数！');	
+			oText.value = '';
+			
+		} else if(text.length<5 ||text.length>10){
+			
+			alert('输入的数字必须在5位以上，10位以内');
+			oText.value = '';
+		}
+	}
+ };
+</script>
+</head>
+
+<body>
+检测qq号码的输入：<br />
+1、有没有输入<br />
+2、输入的是不是数字<br />
+3、不能有0在前面<br />
+4、不能是小数<br />
+5、输入的数字必须在5位以上、10位以内<br /><br />
+
+请输入QQ号码:<input type="text" />
+<input type="button" value="判断" />
+</body>
+</html>

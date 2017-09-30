@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,ul { margin:0; padding:0;}
+ li { list-style:none;}
+ 
+ ul { width:300px; height:30px; margin:60px auto;}
+ ul li { width:100px; height:30px; line-height:30px; text-align:center; background:#C96; color:#fff; float:left; position:relative;}
+ div { width:80px; background:#CC6; filter:alpha(opacity=0); opacity:0; position:absolute; top:30px; left:10px; height:0;}
+</style>
+<script src="zmx-prefect.js"></script>
+<script>
+ window.onload = function (){
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	var oDiv = null;
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].onmouseover = function (){
+			oDiv = this.getElementsByTagName('div')[0];
+			
+			oDiv.style.height='auto';
+			var iHeight = oDiv.offsetHeight;
+			oDiv.style.height=0;
+			
+			startMove(oDiv,{ height:iHeight, opacity:100});				
+		}
+		
+		aLi[i].onmouseout = function (){
+			oDiv = this.getElementsByTagName('div')[0];
+			
+			startMove(oDiv,{ height:0, opacity:0});
+		};
+	}
+ };
+</script>
+</head>
+
+<body>
+<ul>
+	<li>
+    	首页
+        <div>
+        	sfaf<br />
+			fsf<br />
+			fsf<br />
+        </div>
+    </li>
+    <li>
+    	产品
+        <div>
+        	sfaf<br />
+			fsf<br />
+			fsf<br />
+            sfjsf<br />
+			fgjslgj<br />
+			fsf<br />
+        </div>
+    </li>
+    <li>
+    	关于我们
+        <div>
+			fsf<br />
+            sfjsf<br />
+			fgjslgj<br />
+			fsf<br />
+        </div>
+    </li>
+</ul>
+</body>
+</html>

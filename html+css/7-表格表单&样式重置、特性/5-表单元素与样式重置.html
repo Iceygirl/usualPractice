@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>表单</title>
+		<style>
+			form{margin:0;}
+			input{margin:0;padding:0;}
+			select{margin:0;}
+			textarea{margin:0;padding:0;resize:none;outline:none;overflow:auto;}
+			/*
+			各个浏览器下的默认滚动条显示不兼容
+			css3新增resize调整尺寸
+			*/
+		</style>
+	</head>
+	<body>
+		<form action="提交到的网址" method="get" target="_blank">
+			提交按钮：<input type="submit" value="提交" name=""/><br/><br/>
+			文本框：<input type="text" value="周小曼" name=""/><br/><br/>
+			密码框：<input type="password"  name=""/><br/><br/>
+			单选按钮:<input type="radio" name="gender" id="male"/><label for="male">男</label>
+					<input type="radio" name="gender" id="female"/><label for="female">女</label><br/><br/>
+			复选按钮:<input type="checkbox" name="" checked/>跳舞
+					<input type="checkbox" name=""/>唱歌
+					<input type="checkbox" name=""/>画画
+					<input type="checkbox" name=""disabled/>主持<br/><br/>
+			<!-- checked 默认选中,disabled 禁用-->
+			
+			下拉选框：
+			<select>
+				<option>1993</option>
+				<option>1994</option>
+				<option selected>1995</option>
+				<option>1996</option>
+			</select><br/><br/>
+			<!-- select不支持高度 -->
+			
+			文本域：
+			<textarea></textarea>
+			<!-- css3新增resize调整尺寸 -->
+			
+			<hr/>
+			上传：<input type="file" name=""/><br/><br/>
+			图片：<input type="image" src="img/sun.png" name=""/><br/><br/>
+			按钮：<input type="button" name=""/><br/><br/>
+			重置：<input type="reset" name=""/><br/><br/>
+			隐藏：<input type="hidden" name=""/>
+			<hr/>
+			
+			
+		</form>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	ul { margin:0; padding:0;}
+	li { list-style:none;}
+	a { text-decoration:none; color:#666;}
+	.li { width:80px; height:30px; border:1px solid #666; position:relative;}
+	.weibo { height:30px; display:block; line-height:30px; text-align:center;  }
+	ul ul{ width:100px; border:1px solid #333; position:absolute; top:30px; left:-1px; display:none;}
+	ul ul li { text-align:center; line-height:20px;}
+</style>
+<script>
+	window.onload = function (){
+		var o_li = document.getElementById("li");
+		var o_weibo = document.getElementById("weibo");
+		var o_ul = document.getElementById("ul");
+		
+		o_li.onmouseover = function (){
+			o_ul.style.display = 'block';
+			o_weibo.style.background = 'yellow';	
+		}
+		
+		o_li.onmouseout = function (){
+			o_ul.style.display = 'none';
+			o_weibo.style.background = '#fff';	
+		}
+	}
+	/*
+	JS中如何获取元素：
+		1、通过ID名称来获取元素：
+				docuemnt.getElementById('link');
+		2……
+	
+	事件：鼠标事件、键盘事件、系统事件、表单事件、自定义事件……
+	
+		onclick
+		onmouseover
+		onmouseout
+		onmousedown
+		onmouseup
+		onmousemove		就像是鼠标抚摸一样的事件
+		……
+		
+		onload				加载完以后执行……
+		window.onload = 事情
+		img.onload
+		body.onload
+		……
+		
+	如何添加事件：
+		元素.onmouseover
+		
+	函数：可以理解为-命令，做一些事~~
+		A 有名函数：function abc(){}// 肯定不会主动执行的！
+		调用：1、直接调用：abc();
+			 2、事件调用：元素.事件 = 函数名 oDiv.onclick = abc;
+		B 匿名函数：function (){}		
+		调用：元素.事件 = function (){};
+		
+	
+	测试：
+		alert(1);		带一个确定按钮的警告框
+		alert('ok');	'ok' 字符串
+		alert("ok");
+		
+	变量：
+		var li = document.getElementById('lis');
+		var num = 123;
+		var name = 'leo';
+*/	
+</script>
+</head>
+
+<body>
+	<ul>
+    	<li class="li" id="li">
+        	<a href="#" class="weibo" id="weibo">微博</a>
+            <ul id="ul">
+            	<li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+<!--
+
+希望把某个元素移除你的视线：
+
+	1、display:none;				显示为无
+  2、visibility:hidden;	隐藏
+  3、width \ height
+  4、透明度
+  5、left \ top
+  6、拿一个白色DIV盖住它
+  7、margin负值
+  ……
+
+-->
+</html>

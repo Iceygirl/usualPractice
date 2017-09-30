@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ p { width:400px; height:200px; border:10px solid #CCC; background:#FF9; padding:20px;}
+ span { background:#F9C;}
+</style>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input');
+	var oP = document.getElementsByTagName('p')[0];
+	var content = oP.innerHTML;
+	
+	aInp[1].onclick = function (){
+		var str = aInp[0].value;
+		oP.innerHTML = content.split(str).join('<span>'+str+'</span>');	
+	};
+	
+	aInp[4].onclick = function(){
+		var str1 = aInp[2].value;
+		var str2 = aInp[3].value;
+		
+		if(!str1) return;
+		oP.innerHTML = content.split(str1).join('<span>'+str2+'</span>');
+	};
+ };
+</script>
+</head>
+
+<body>
+ <input type="text" />
+ <input type="button" value="查找" /><br /><br/>
+ <input type="text"  />
+ <input type="text" />
+ <input type="button" value="替换" />
+ <p>
+搜狐公司是中国领先的新媒体、通信及移动增值服务公司，是中文世界强劲的互联网品牌。搜狐是一个具有影响力与公信力的新闻中心、联动娱乐市场，跨界经营的娱乐中心、深受体育迷欢迎的体育中心、引领潮流的时尚文化中心。“搜狐”在中国是家喻户晓的名字。搜狐公司是2008北京奥运会互联网内容服务赞助商，是中国网民上网冲浪的首选门户网站
+ </p>
+</body>
+</html>

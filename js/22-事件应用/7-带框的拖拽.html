@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#box1{ width:100px; height:100px; position:absolute; background:red;}
+.dragDiv { position:absolute; border:1px dashed #000;}
+</style>
+<script>
+window.onload = function (){
+	drag('box1');
+	
+	function drag(id){
+		var oDiv = document.getElementById(id);
+		var disX=0, disY=0;
+		
+		oDiv.onmousedown = function (ev){
+			var oEvent = ev || event;
+			disX = oEvent.clientX - oDiv.offsetLeft;
+			disY = oEvent.clientY - oDiv.offsetTop;
+			
+			var oNewDiv = document.createElement('div');
+			oNewDiv.style.width = oDiv.offsetWidth-1 + 'px';
+			oNewDiv.style.height = oDiv.offsetHeight-1 + 'px';
+			oNewDiv.style.left = oDiv.offsetLeft + 'px';
+			oNewDiv.style.top = oDiv.offsetTop + 'px';
+			
+			oNewDiv.className = 'dragDiv';
+			document.body.appendChild(oNewDiv);
+			
+			document.onmousemove = function (ev){
+				var oEvent = ev || event;
+				
+				oNewDiv.style.left = oEvent.clientX - disX + 'px';
+				oNewDiv.style.top = oEvent.clientY - disY + 'px';
+				
+			}
+			
+			document.onmouseup = function (){
+				document.onmousemove = null;
+				document.onmouseup = null;
+				
+				oDiv.style.left = oNewDiv.offsetLeft + 'px';
+				oDiv.style.top = oNewDiv.offsetTop + 'px';
+				
+				document.body.removeChild(oNewDiv);
+			}
+			
+			return false;
+		}
+	}
+};
+</script>
+</head>
+<body>
+<div id="box1">1</div>
+</body>
+</html>

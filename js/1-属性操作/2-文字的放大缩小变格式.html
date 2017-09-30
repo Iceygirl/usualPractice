@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ .red { width:400px; height:200px; border:10px solid #C66; background:red; color:yellow; }
+ .yellow { width:400px; height:200px; border:10px solid #c66; background:yellow; color:red;}
+</style>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input'); 
+	var oLarge = aInp[0];
+	var oSmall = aInp[1];
+	var oRed = aInp[2];
+	var oYellow = aInp[3];
+	var oP = document.getElementsByTagName('p')[0];
+	var num =16;
+	
+	oLarge.onclick = function (){
+		num++;
+		if(num>20){
+			num = 20;
+		}
+		oP.style.fontSize = num+'px';
+	};
+	
+	oSmall.onclick = function (){
+		num--;
+		if(num<14){
+			num = 14;	
+		}
+		oP.style.fontSize = num+'px';
+	}
+	
+	oRed.onclick = function (){
+		oP.className = 'red';
+	};
+	
+	oYellow.onclick = function (){
+		oP.className = 'yellow';
+	};
+ };
+</script>
+</head>
+
+<body>
+<input type="button" value="+" />
+<input type="button" value="-" />
+<input type="button" value="红" />
+<input type="button" value="黄" />
+<p>10月28日晚，中央纪委监察部官网发布消息，贵州省委常委、遵义市委书记廖少华因涉嫌严重违纪违法接受组织调查。3天后中组部宣布对其免职。廖成为十八大后中纪委一连串"打虎"行动中第十一位落马的副省部级以上高官.</p>
+</body>
+</html>

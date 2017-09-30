@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ .box { width:800px; height:100px; padding:10px; border:3px solid #000; display: -webkit-box; -webkit-box-orient:horizontal; -webkit-box-direction:reverse;}
+ .box div { width:100px; height:100px; background:#F06; color:#fff; font-size:30px; border:1px solid #fff;}
+ 
+/*
+注意在使用弹性盒模型的时候,
+父元素必须要加display:box 或 display:inline-box
+
+1.Box-orient 定义盒模型的布局方向
+	--Horizontal 水平显示(默认)
+	--vertical 垂直方向
+	
+2.box-direction 元素排列顺序
+	--Normal 正序
+	--Reverse 反序
+	
+3.box-ordinal-group:设置元素的具体位置
+*/
+</style>
+</head>
+
+<body>
+<div class="box">
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+</div>
+</body>
+</html>

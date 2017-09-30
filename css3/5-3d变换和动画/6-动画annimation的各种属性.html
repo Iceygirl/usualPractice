@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+@-webkit-keyframes move
+{
+	50%
+	{
+		width:1000px;
+	}
+}
+.box{width:100px;height:100px;background:red; -webkit-animation:5s move ease-in infinite;
+}
+
+/*
+1.必要属性：
+	（1）animation-name：动画名称（关键帧名称）
+	（2）animation-duration：动画持续时间
+
+2.可选属性：
+	（1）animation-timing-function：动画运动形式
+			--linear：匀速。
+			--ease：缓冲。
+			--ease-in：由慢到快。
+			--ease-out：由快到慢。
+			--ease-in-out：由慢到快再到慢。
+			--cubic-bezier(number, number, number, number)：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内
+
+	（2）animation-delay：动画延迟
+		只是第一次
+		
+	（3）animation-iteration-count：重复次数
+		infinite为无限次
+		
+	（4）animation-direction：播放前重置，动画是否重置后再开始播放
+		alternate	动画直接从上一次停止的位置开始执行
+		normal	动画第二次直接跳到0%的状态开始执行
+		
+	（5）linear
+*/
+</style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

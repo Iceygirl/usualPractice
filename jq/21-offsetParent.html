@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ * { margin:0; padding:0;}
+ #div1 { width:200px; height:200px; background:red; margin:20px; overflow:hidden; position:relative;}
+ #div2 { width:100px; height:100px; background:yellow; margin:10px; position:absolute; left:20px; }
+</style>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	//$('#div1').parent().css('background','blue');
+	
+	$('#div2').parent().css('background','blue'); 
+	$('#div2').offsetParent().css('background','red');
+	
+	//parent() : 获取父级
+	//offsetParent() : 获取有定位的父级
+ });
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<div id="div2"></div>
+</div>
+</body>
+</html>

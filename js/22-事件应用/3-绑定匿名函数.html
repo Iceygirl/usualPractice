@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+function aaa (){
+	alert('a');
+}
+window.onload = function (){
+	var oBtn = document.getElementsByTagName('input')[0];
+	
+	/*
+	oBtn.addEventListener('click',aaa,false);
+	oBtn.removeEventListener('click',aaa,false);
+	*/
+	
+	oBtn.addEventListener('click',function (){
+		alert('a');
+	},false);
+	oBtn.removeEventListener('click',function (){
+		alert('a');
+	},false);
+	
+	//匿名函数添加事件绑定的话，无法删除
+};
+</script>
+</head>
+<body>
+<input type="button" value="按钮"/>
+</body>
+</html>

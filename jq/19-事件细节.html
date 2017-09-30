@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	$('div').mousedown(function (ev){
+		/*ev：event对象，JQ中已经做好兼容
+		ev.pageX:相对于文档，ev.clientX相对于可视区
+		ev.which:keycode
+		ev.preventDefault()    阻止默认事件
+		ev.stopPropagation()   阻止冒泡事件
+		return false;          阻止默认事件+冒泡事件*/
+	}); 
+	
+	$('div').one('click',function (){
+		alert(123);	
+	});
+ });
+</script>
+</head>
+
+<body>
+<div>11</div>
+</body>
+</html>

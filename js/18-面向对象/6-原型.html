@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+var arr1 = new Array(12,4,5,7,8);
+var arr2 = new Array(4,5,7,8);
+/*arr1.sum = function (){
+	var sum = 0;
+	for(var i=0;i<this.length;i++){
+		 sum += this[i];
+	}
+	alert(sum);
+};
+arr1.sum();
+arr2.sum();  //报错
+*/
+Array.prototype.sum = function (){
+	var sum = 0;
+	for(var i=0;i<this.length;i++){
+		 sum += this[i];
+	}
+	alert(sum);
+}
+arr1.sum();
+arr2.sum();
+alert(arr1.sum == arr2.sum);
+</script>
+</head>
+<body>
+</body>
+</html>

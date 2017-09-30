@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	window.onload = function (){
+		var oUl = document.getElementById('list');
+		var oUl1 = document.getElementsByTagName('ul')[0];
+		
+		var aLi1 = document.getElementsByTagName('li');
+		var aLi2 = oUl.getElementsByTagName('li');
+		var aLi3 = oUl1.getElementsByTagName('li');
+		
+		alert(aLi1.length);	
+		alert(aLi2.length);
+		alert(aLi3.length);
+	};
+	
+	/*
+		这两种的区别：
+			1.getElementById前面的对象只能是document,getElementsByTagName可以是
+			  document也可以是别的对象
+			2.getElementById('list')    ->静态方法
+			  getElementsByTagName('ul')  ->动态方法
+			3.getElementsByTagName得到的是一个元素的集合，在用TagName的时候，必须要加上:[]
+	*/
+</script>
+</head>
+
+<body>
+	<ul id="list">
+    	<li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ol>
+    	<li></li>
+        <li></li>
+    </ol>
+</body>
+</html>

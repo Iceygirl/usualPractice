@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+  var aInp = document.getElementsByTagName('input');
+  var oDiv = document.getElementsByTagName('div')[0];
+  var newStr = '';
+	
+  aInp[1].onclick = function (){
+   var str = aInp[0].value;
+   for(var i=0;i<str.length;i++){
+	  newStr += String.fromCharCode(str.charCodeAt(i)-2200);
+	  oDiv.innerHTML = newStr;
+	 }
+	};
+ };
+</script>
+</head>
+
+<body>
+ <input type="text" />
+ <input type="button" value="加密" />
+ <div>加密中..</div>
+</body>
+</html>

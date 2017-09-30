@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ ul { width:100px; height:150px; background:#FCC; position:absolute; display:none;}
+</style>
+<script>
+ window.onload = function (){
+	var oUl = document.getElementsByTagName('ul')[0];
+	
+	document.oncontextmenu = function (ev){
+		var oEvent = ev||event;
+		oUl.style.display = 'block';
+		oUl.style.left = oEvent.clientX+'px';
+		oUl.style.top = oEvent.clientY+'px';
+		return false;
+	};
+	
+	document.onclick = function (){
+		oUl.style.display='none';
+	};
+ };
+</script>
+</head>
+
+<body>
+<ul>
+ <li>首页</li>
+ <li>论坛</li>
+ <li>...</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var oV = document.getElementById('v1'); 
+	var oC = document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	
+	oC.width = oV.videoWidth;
+	oC.height = oV.videoHeight;
+	
+	setInterval(function (){
+		oGC.drawImage(oV,0,0);	
+	},30);
+ };
+ 
+ //思路：可以通过canvas做图像的变化，比如倒影什么的
+</script>
+</head>
+
+<body>
+<video controls id="v1">
+	<source src="Intermission-Walk-in_512kb.mp4"></source>
+    <source src="johann_sebastian_bach_air.ogg"></source>
+</video>
+<canvas id="c1"></canvas>
+</body>
+</html>

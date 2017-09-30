@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script>
+function getIndex(obj)
+{
+	var aBrother=obj.parentNode.children;
+	var i=0;
+	
+	for(i=0;i<aBrother.length;i++)
+	{
+		if(aBrother[i]==obj)
+		{
+			return i;
+		}
+	}
+}
+
+window.onload=function ()
+{
+	var aBtn=document.getElementsByTagName('input');
+	var i=0;
+	
+	for(i=0;i<aBtn.length;i++)
+	{
+		aBtn[i].onclick=function ()
+		{
+			alert(getIndex(this));
+		};
+	}
+};
+</script>
+</head>
+
+<body>
+<input type="button" value="aaa" />
+<input type="button" value="bb" />
+<input type="button" value="ccc" />
+<input type="button" value="ddd" />
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ body,input { margin:0; padding:0;}
+ #div1 { float:left; width:200px; height:10px; background:#CCC; position:relative;}
+ #div2 { width:20px; height:10px; background:#C33; position:absolute; left:0; top:0;}
+ #div3 { width:100px; height:8px; background:#CCC; position:relative; overflow:hidden;}
+ #div4 { width:10px; height:10px; background:#C60; position:absolute; left:50px; top:0;}
+</style>
+<script>
+ window.onload = function (){
+	var aInp = document.getElementsByTagName('input');
+	var oV = document.getElementById('v1');
+	var timer = null;
+	
+	var oDiv1 = document.getElementById('div1');
+	var oDiv2 = document.getElementById('div2');
+	var oDiv3 = document.getElementById('div3');
+	var oDiv4 = document.getElementById('div4');
+	
+	//播放或暂停
+	aInp[0].onclick = function (){
+		if(oV.paused){
+			oV.play();
+			this.value = '暂停';
+			nowTime();
+			timer = setInterval(nowTime,1000);		
+		} else {
+			oV.pause();
+			this.value = '播放';
+			clearInterval(timer);
+		}
+	};
+	
+	
+	aInp[2].value = changeTime(oV.duration);
+	
+	//是否静音
+	aInp[3].onclick = function (){
+		if(oV.muted){
+			oV.volume = 1;
+			this.value = '静音';
+			oV.muted = false;	
+		} else {
+			oV.volume = 0;
+			this.value = '取消静音';
+			oV.muted = true;
+		}
+	};
+	
+	aInp[4].onclick = function (){
+		
+		//oV.videoWidth = document.documentElement.clientWidth;
+		//oV.videoHeight = document.documentElement.clientHeight;
+		
+		/*var de = document.documentElement;
+		 if (de.requestFullscreen) {
+			 de.requestFullscreen();      //IE
+		 } else if (de.mozRequestFullScreen) {
+			 de.mozRequestFullScreen();    //火狐
+		 } else if (de.webkitRequestFullScreen) {
+			 de.webkitRequestFullScreen();  //谷歌
+		 }*/
+		 
+		 oV.webkitRequestFullScreen()
+	 };
+	
+	function nowTime(){
+		aInp[1].value = changeTime(oV.currentTime);
+		var scale = oV.currentTime/oV.duration;
+		oDiv2.style.left = scale*180+'px';	
+	}
+	
+	
+	function changeTime(iNum){
+		var iH = toTwo(Math.floor(iNum/3600));
+		var iM = toTwo(Math.floor(iNum%3600/60));
+		var iS = toTwo(Math.floor(iNum%60));
+		return iH+':'+iM+':'+iS;
+	};
+	
+	function toTwo(num){
+		if(num<10){
+			return '0'+num;	
+		} else {
+			return ''+num;	
+		}
+	};
+	
+	//移动滑动改变播放进度
+	oDiv2.onmousedown = function (ev){
+		var oEvent = ev || event;
+		dix = oEvent.clientX - oDiv2.offsetLeft;
+		
+		document.onmousemove = function (ev){
+			var oEvent = ev || event;
+			var L = oEvent.clientX - dix;
+			
+			if(L<0){
+				L = 0;	
+			} else if(L>oDiv1.offsetWidth-oDiv2.offsetWidth) {
+				L = oDiv1.offsetWidth-oDiv2.offsetWidth;
+			}
+			
+			oDiv2.style.left = L + 'px';
+			
+			var scale = L/(oDiv1.offsetWidth-oDiv2.offsetWidth);
+			oV.currentTime = scale * oV.duration;
+			nowTime();
+		}
+		
+		document.onmouseup = function (){
+			document.onmousemove = null;
+			document.onmouseup = null;	
+		}
+		return false;
+	};
+	
+	//移动滑块改变音量
+	oDiv4.onmousedown = function (ev){
+		var oEvent = ev || event;
+		disX = oEvent.clientX - oDiv4.offsetLeft;
+		
+		document.onmousemove = function (ev){
+			var oEvent = ev || event;
+			
+			var L = oEvent.clientX - disX;
+			
+			if(L<0){
+				L = 0;	
+			} else if(L>oDiv3.offsetWidth - oDiv4.offsetWidth){
+				L = oDiv3.offsetWidth - oDiv4.offsetWidth;	
+			}
+			
+			oDiv4.style.left = L +'px';
+			
+			var scale = L/(oDiv3.offsetWidth - oDiv4.offsetWidth);
+			oV.volume = scale;
+		};
+		
+		document.onmouseup = function (){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		
+		return false;
+	};
+ };
+</script>
+</head>
+
+<body>
+<video id="v1">
+	<source src="Intermission-Walk-in_512kb.mp4"></source>
+    <source src="Intermission-Walk-in.ogv"></source>
+</video><br/>
+<p>播放进度(可移动滑块改变进度)：</p>
+<div id="div1">
+	<div id="div2"></div>
+</div>
+<input type="button" value="播放"/>
+<input type="button" value="00:00:00"/>
+<input type="button" value="00:00:00"/>
+<p>音量(可移动滑块改变音量)：</p>
+<div id="div3">
+	<div id="div4"></div>
+</div>
+<input type="button" value="静音"/>
+<input type="button" value="全屏"/>
+</body>
+</html>

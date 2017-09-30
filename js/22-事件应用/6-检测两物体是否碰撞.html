@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#box1,#box2 { width:100px; height:100px; position:absolute; z-index:1;}
+#box1 { background:red; left:0; top:0; }
+#box2 { background:yellow; left:300px; top:200px;}
+</style>
+<script>
+window.onload = function (){
+	drag('box1','box2');
+	
+	function drag(id1,id2){
+		var oDiv1 = document.getElementById(id1);
+		var oDiv2 = document.getElementById(id2);
+		var disX=0, disY=0;
+		
+		oDiv1.onmousedown = function (ev){
+			var oEvent = ev || event;
+			disX = oEvent.clientX - oDiv1.offsetLeft;
+			disY = oEvent.clientY - oDiv1.offsetTop;
+			
+			document.onmousemove = function (ev){
+				var oEvent = ev || event;
+				oDiv1.style.left = oEvent.clientX - disX + 'px';
+				oDiv1.style.top = oEvent.clientY - disY + 'px';
+				
+				var l1 = oDiv1.offsetLeft;
+				var r1 = oDiv1.offsetLeft + oDiv1.offsetWidth;
+				var t1 = oDiv1.offsetTop;
+				var b1 = oDiv1.offsetTop + oDiv1.offsetHeight;
+				
+				var l2 = oDiv2.offsetLeft;
+				var r2 = oDiv2.offsetLeft + oDiv2.offsetWidth;
+				var t2 = oDiv2.offsetTop;
+				var b2 = oDiv2.offsetTop + oDiv2.offsetHeight;
+				
+				if(r1<l2 || l1>r2 || b1<t2 || t1>b2){
+					oDiv2.style.background = 'yellow';
+				} else {
+					oDiv2.style.background = 'green';
+				}
+			}
+			
+			document.onmouseup = function (){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+			
+			return false;
+		}
+	}
+};
+</script>
+</head>
+<body>
+<div id="box1">1</div>
+<div id="box2">2</div>
+</body>
+</html>

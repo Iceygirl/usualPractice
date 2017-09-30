@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+ /*var json = { 'name':'周小曼','age':'22'};
+ alert(json.name);
+ alert(json['name']);*/
+ 
+ 
+ /*var arrColor = ['red','orange','yellow','blue'];
+ var arrText = ['红','橙','黄','蓝'];
+ 
+ var json = {
+	'color': ['red','orange','yellow','blue'],
+	'text':	['红','橙','黄','蓝']
+ };
+ alert(json.color[0]+'的中文是'+json.text[0]);*/
+ 
+ 
+ /*var json = { 'name':'周小曼','age':'22'};
+ json.age = 18;
+ alert(json.age);*/
+ 
+ 
+ /*var arr = [ { 'name':'周小曼','age':'18'}, { 'name':'周雪儿','age':'21'}];
+ alert(arr[1].name);*/
+ 
+ 
+ /*var json = { 'name':'周小曼','age':'18','hobby':'running'};
+ for(var attr in json){
+	alert(attr + '是' + json[attr]); 
+ }*/
+ 
+ 
+/* var arr = [ { 'name':'周小曼','age':'18'}, { 'name':'周雪儿','age':'21'}];
+ for(var i=0;i<arr.length;i++){
+	 for(var attr in arr[i]){
+		alert(attr+'是'+arr[i][attr]); 
+	 } 
+ }*/
+ 
+ 
+ var json = {
+	'color': ['red','orange','yellow','blue'],
+	'text':	['红','橙','黄','蓝']
+ };
+ for(var attr in json){
+	for(var i=0;i<json[attr].length;i++){
+		alert(json[attr][i]);
+	}
+ }
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>瀑布流加载图片数据</title>
+<style>
+	body { margin:0;}
+	li { list-style:none;}
+	img { width:280px;}
+	ul { width:1248px; margin:50px auto;}
+	li { float:left; width:280px; border:1px solid #000; padding:10px; margin-right:10px;}
+	div { width:280px; }
+</style>
+<script src="ajax.js" type="text/javascript"></script>
+<script>
+	window.onload = function (){
+	
+		var oUl = document.getElementById('list');
+		var aLi = oUl.getElementsByTagName('li');
+		var page = 5;
+		var b = true;  //移动滚动条只加载一页
+		
+		getData();
+		
+		window.onscroll = function (){
+		
+			var index = getShortLi();
+			var oLi = aLi[index];
+			
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			
+			
+			if( getTop(oLi) + oLi.offsetHeight <  document.documentElement.clientHeight + scrollTop){	
+				
+				if(b){
+					b=false;
+					page++;
+					getData();
+				}
+				
+			}
+			
+		};
+		
+		function getData(){
+				
+			ajax('get','getPics.php','cpage='+page,function(data){
+				var data = JSON.parse(data);
+				
+				if(!data.length){
+					return;
+				}
+				
+				for(var i=0;i<data.length;i++){
+					var _index = getShortLi();
+					
+					var oDiv = document.createElement('div');
+					var oImg = document.createElement('img');
+					
+					oImg.src = data[i].preview;
+					oImg.style.height = data[i].height * ( 225/data[i].width) + 'px';
+					oDiv.appendChild(oImg);
+					
+					var oP = document.createElement('p');
+					oP.innerHTML = data[i].title;
+					oDiv.appendChild(oP);
+					
+					aLi[_index].appendChild(oDiv);
+				}
+				
+				b=true;
+			});
+			
+		}
+		
+		function getShortLi(){
+			var iNum = 0;
+			var ih = aLi[iNum].offsetHeight;
+			
+			for(var i=0;i<aLi.length;i++){
+				if( aLi[i].offsetHeight < ih ){
+					iNum = i;
+					ih = aLi[i].offetHeight;
+				}
+			}
+			
+			return iNum;
+		}
+		
+		function getTop(obj){
+			var iTop = 0;
+			while(obj){
+				iTop += obj.offsetTop;
+				obj = obj.offsetParent;
+			}
+			return iTop;
+		}
+		
+	
+	};
+</script>
+</head>
+<body>
+	<ul id="list">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>	

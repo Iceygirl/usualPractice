@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="ajax.js"></script>
+<script>
+ window.onload = function(){
+	 var oBtn = document.getElementsByTagName('input')[0];
+	 
+	 oBtn.onclick = function (){
+		Ajax('abc.txt?t='+new Date().getTime(),function(str){
+		    alert(str);	
+		}); 
+	 };
+ };
+ 
+ /*
+   1.服务器上的文件名只能是数字或者英文，这些html都要放在服务器上
+   2.使用AJAX，读取服务器环境下的文件,ajax能且仅能 从服务器读取文件
+   3.读取文件时注意编码一致
+   4.用 new Date().getTime() 方式消除缓存的影响
+   */
+</script>
+</head>
+
+<body>
+点击按钮之后，读取服务器上的abc.txt文件<br />
+<input type="button" value="读取文件" />
+</body>
+</html>

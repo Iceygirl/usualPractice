@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var aA = document.getElementsByTagName('a');
+	var oUl = document.getElementsByTagName('ul')[0];
+	
+	for(var i=0;i<aA.length;i++){
+	  aA[i].onclick = function (){
+		oUl.removeChild(this.parentNode);  
+	  };
+	}
+ };
+</script>
+</head>
+
+<body>
+<ul>
+ <li>afssg<a href="javascript:;">删除</a></li>
+ <li>gdb<a href="javascript:;">删除</a></li>
+ <li>zzz<a href="javascript:;">删除</a></li>
+ <li>kkk<a href="javascript:;">删除</a></li>
+</ul>
+</body>
+</html>

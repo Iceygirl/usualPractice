@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ var str = 'Hi,周小曼，美好的一天开始啦~~~'
+ 
+ //alert(str.indexOf('曼'));        //5
+ //alert(str.indexOf('曼',4));      //5,从第4个字符开始找
+ //alert(str.indexOf('Hi'));
+ //alert(str.indexOf('Hi',2));        //-1表示没有找到
+ 
+ var str1 = 'Hi,周小曼，美好的一天开始啦~~~Hi,周小曼，美好的一天开始啦~~~Hi,周小曼，美好的一天开始啦~~~';
+ var subStr = '周小曼';
+ var i=0;
+ 
+ 
+ while(str1.indexOf(subStr,i)!=-1){
+   var index = str1.indexOf(subStr,i);
+   alert(index);
+   i = index + subStr.length;
+ }
+</script>
+</head>
+
+<body>
+</body>
+</html>

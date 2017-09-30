@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>pages</title>
+		<style>
+			body,p,h1,h2,h3,h4,h5,h6,dl,dd
+			{
+				margin:0;
+				font-size:12px;
+			}
+			ol,ul
+			{
+				margin:0;
+				padding:0;
+				list-style:none;
+			}
+			a
+			{
+				text-decoration:none;
+			}
+			img
+			{
+				border:none;
+			}
+			#pages
+			{
+				width:600px;
+				height:60px;
+				margin:90px auto;
+				boder:1px solid #cdcdcd;
+				background:#e8e8e8;
+				text-align:center;
+			}
+			#pages a
+			{
+				height:9px;
+				margin:15px 4px 15px 5px;
+				padding:10px 9px;
+				border:1px solid #cdcdcd;
+				background:#fcf9ea;
+				display:inline-block;
+				color:#333333;
+				line-height:9px;
+			}
+			
+			#pages a:hover
+			{
+				color:red;
+				border-color:red;
+				
+			}
+			#pages .active
+			{
+				font-weight:bold;
+				font-size:14px;
+				background:#fcf9ea;
+				cursor:text;
+			}
+			#pages .active:hover
+			{
+				border-color:#cdcdcd;
+				color:#333333;
+			}
+		/*
+		1.分析结构(div中包含一排a)
+		2.a标签支持宽高，并在一排中显示
+		3.有hover效果
+		4.当前状态不能点
+
+		cursor:显示的光标的类型
+		cursor:pointer|text|move
+		cursor:url(hand.cur),point:
+		*/	
+		</style>
+	</head>
+	<body>
+		<div id="pages">
+			<a href="#">上一页</a>
+			<a href="#">1</a>
+			<a href="#">2</a>
+			<a href="#" class="active">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+			<a href="#">123</a>
+			<a href="#">124</a>
+			<a href="#">125...</a>
+			<a href="#">下一页</a>
+		</div>
+	</body>
+</html>

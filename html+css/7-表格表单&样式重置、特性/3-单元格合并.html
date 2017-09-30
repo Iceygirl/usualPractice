@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta chsrset="utf-8"/>
+		<title>单元格合并</title>
+		<style>
+			body{margin:0;}
+			table{border-collapse:collapse;}
+			th,td{padding:0;}
+			
+			table{width:400px;}
+			th,td{border:1px solid black;width:100px;height:50px;}
+			
+			/*
+			单元格合并：
+			1.colspan:列合并
+			2.rowspan:行合并
+			
+			合并完之后要将多余的删掉
+			
+			*/
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th colspan="2">1</th>
+				<th >1</th>
+				<th>1</th>
+			</tr>
+			<tr>
+				<th rowspan="2">1</th>
+				<th>1</th>
+				<th colspan="2" rowspan="2">1</th>
+			</tr>
+			<tr>
+				<th>1</th>
+			</tr>
+		</table>
+	</body>
+</html>

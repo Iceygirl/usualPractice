@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#div1 { width:100px; height:100px; background:red; }
+</style>
+<script>
+function addEvent(obj,sEvent,fn){
+	if(obj.attachEvent){
+		obj.attachEvent('on'+sEvent,fn);
+	} else {
+		obj.addEventListener(sEvent,fn);
+	}
+}
+window.onload = function (){
+	var oDiv = document.getElementById('div1');
+	
+	function mouseWheel(ev){
+		var oEvent = ev || event;
+		var bDown = true;
+		bDown = oEvent.wheelDelta ? oEvent.wheelDelta<0:oEvent.detail>0;
+		
+		/*
+		if(oEvent.wheelDelta){
+			if(oEvent.wheelDelta<0){
+				bDown = true;
+			} else {
+				bDown = false;
+			}
+		} else {
+			if(oEvent.detail>0){
+				bDown = true;
+			} else {
+				bDown = false;
+			}
+		}*/
+		if(bDown){
+			oDiv.style.height = oDiv.offsetHeight +10 +'px';
+		} else {
+			oDiv.style.height = oDiv.offsetHeight -10 +'px';
+		}
+		//IE,Chrome 向下滚为负数，上为正
+		//alert(oEvent.wheelDelta);
+		
+		//FF 向下滚为正数，向上滚为负数
+		//alert(oEvent.detail);
+		if(oEvent.preventDefault){
+			oEvent.preventDefault();
+		}
+		return false;
+	}
+	
+	addEvent(oDiv,'mousewheel',mouseWheel);
+	addEvent(oDiv,'DOMMouseScroll',mouseWheel);
+	
+	/*IE,Chrome
+	oDiv.onmousewheel = function (){
+		alert('a');
+	};
+	
+	//FF，这种情况不行
+	oDiv.DOMMouseScroll  = function (){
+		alert('a');
+	};
+	
+	oDiv.addEventListener('DOMMouseScroll',function (){
+		alert('a');
+	},false);
+	
+	普通事件：onclick,onmouseover
+	DOM事件：指在FF上，DOMMouseScroll
+	DOM事件只能通过绑定来添加
+	*/
+	
+};
+</script>
+</head>
+<body style="height:2000px;">
+<div id="div1"></div>
+</body>
+</html>

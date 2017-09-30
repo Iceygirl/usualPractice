@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ p{ border:1px solid #000; width:100px;}
+ p[n]{ background:#FC9;}     
+ p[n=zmx] { background:#6CF;}  
+ p[n~=zxe] { background:#CF9;}  /*有属性值列表*/
+ p[n^=l] { background:#9C6;}    /*开头*/
+ p[n$=t] { background:#60F;}    /*结尾*/
+ p[n*=z] { background:#F9C;}    /*包含*/
+ p[n|=f] { background:#CC3;}    /*以f或者f-开头*/
+</style>
+</head>
+
+<body>
+<p n="f-zmx">周小曼</p>
+<p n="lyj">银娟</p>
+<p n="f-zxe yound">细妹</p>
+<p n="f-zmt">大姐</p>
+</body>
+</html>

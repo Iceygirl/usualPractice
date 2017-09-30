@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#parent { width:20px; height:302px; background:#ccc; position:absolute; left:290px; top:8px;}
+#box1 { width:24px; height:10px; background:red; position:absolute; top:0; left:-2px; cursor:pointer}
+#wrap { width:280px; height:300px; border:1px solid #000; overflow:hidden; position:relative;}
+#text { width:280px; height:700px; position:absolute;}
+</style>
+<script>
+function addEvent(obj,sEvent,fn){
+	if(obj.attachEvent){
+		obj.attachEvent('on'+sEvent,fn);
+	} else {
+		obj.addEventListener(sEvent,fn);
+	}
+}
+
+window.onload = function (){
+	var oDiv = document.getElementById('box1');
+	var oParent = document.getElementById('parent');
+	var oWrap = document.getElementById('wrap');
+	var oText = document.getElementById('text');
+	var disY = 0;
+	
+	function mouseWheel(ev){
+		var oEvent = ev || event;
+		var bDown = true;
+		bDown = oEvent.wheelDelta ? oEvent.wheelDelta<0:oEvent.detail>0;
+		if(bDown){
+			setTop(oDiv.offsetTop +10);
+		} else {
+			setTop(oDiv.offsetTop -10);
+		}
+		
+		if(oEvent.preventDefault){
+			oEvent.preventDefault();
+		}
+		return false;
+	}
+	
+	addEvent(oParent,'mousewheel',mouseWheel);
+	addEvent(oParent,'DOMMouseScroll',mouseWheel);
+	
+	addEvent(oWrap,'mousewheel',mouseWheel);
+	addEvent(oWrap,'DOMMouseScroll',mouseWheel);
+	
+	oDiv.onmousedown = function (ev){
+		var oEvent = ev || event;
+		
+		disY = oEvent.clientY - oDiv.offsetTop;
+		
+		document.onmousemove = function (ev){
+			var oEvent = ev || event;
+			var t = oEvent.clientY - disY;
+			setTop(t);
+		}; 
+		
+		document.onmouseup = function (){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		
+		return false;
+	};
+	
+	function setTop(t){
+
+		if(t<0){
+			t = 0;
+		}
+		if(t>oParent.offsetHeight-oDiv.offsetHeight){
+			t = oParent.offsetHeight-oDiv.offsetHeight;
+		}
+		
+		var scale = t/(oParent.offsetHeight-oDiv.offsetHeight);
+		
+		oText.style.top = -( oText.offsetHeight - oWrap.offsetHeight)*scale + 'px';
+		
+		oDiv.style.top =  t + 'px';
+		}
+};
+</script>
+</head>
+<body>
+<div id="wrap">
+	<div id="text">	      南宁历史悠久，在古代，南宁属于百越领地。秦始皇 统一岭南地区后，南宁属于桂林郡。西汉时期，汉武帝又将它置于玉林郡管辖。东晋大兴元年（公元318年），置大兴郡，以南宁为郡治所在地，南宁建制从此开始，至今已有1600多年。唐朝贞观八年（公元634年），一说贞观六年（公元632年），唐太宗将该地命名为邕州，设邕州下都督府，这就是南宁简称“邕”的由来。 
+		从元丰三年(公元1080年)起，邕城人民开展修城墙、建城楼、挖城壕等浩大工程，城区轮廓大体呈椭圆状，南北稍长，东西较窄，古有“直城三里七，横城七里三”的说法。元朝泰定元年（公元1324年），元朝政府将邕州路改为南宁路，取其南疆安宁之意，“南宁”由此得名。 
+		清宣统三年九月(1911年)，南宁宣布独立。民国元年(1912年)废宣化县，以南宁府长理事，直属广西军政府，后改称广西省政府。三次迁省：第一次迁省：1912年广西省会由桂林迁到南宁。第二次迁省：1936年广西省会由南宁迁回桂林。第三次迁省：1950年。 
+		上世纪30年代起，南宁就是广西省内仅次于梧州的第二大商业城市，商业中心的地位高于当时的省会桂林，也正是民国时期商业的繁荣，铸造了南宁作为一座中心城市的地位和影响力，即使当时还不是省会，但很多方面已经和桂林叫板，正是由于商业和交通的中心地位促成了南宁在近代迅速崛起，最终成为解放后广西省会的不二之选。</div>
+</div>
+
+<div id="parent">
+	<div id="box1"></div>
+</div>
+<p>注：右边为滚动条，可以拖拽滚动，鼠标滚动</p>
+</body>
+</html>

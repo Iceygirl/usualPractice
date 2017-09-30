@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ #div1 { width:200px; height:200px; background:#CC3; margin:50px;}
+</style>
+<script>
+ window.onload = function (){
+	var oDiv = document.getElementById('div1');
+	var oUl = document.getElementById('ul1');
+	var oLi = null;
+	var oImg = null;
+	
+	/*oDiv.ondragenter = function (){
+		this.innerHTML = '可以释放了！';
+	};*/
+	
+	oDiv.ondragover = function (ev){
+		ev.preventDefault();
+	};
+	
+/*	oDiv.ondragleave = function (){
+		this.innerHTML = '将图片拖拽至此处预览';
+	};*/
+	
+	oDiv.ondrop = function (ev){
+		
+		ev.preventDefault();
+		var fs = ev.dataTransfer.files;
+		
+		for(var i=0;i<fs.length;i++){
+			if(fs[i].type.indexOf('image')!=-1){
+				
+				var fd = new FileReader();
+				fd.readAsDataURL(fs[i]);
+				
+				fd.onload = function (){
+					oLi = document.createElement('li');
+					oImg = document.createElement('img');
+					oImg.src = this.result;
+					oLi.appendChild(oImg);
+					oUl.appendChild(oLi);
+				};
+
+			}else {
+				alert('只能上传图片哦');	
+			}
+		}
+	};
+ };
+</script>
+</head>
+
+<body>
+<div id="div1">请将图片拖拽至此处预览</div>
+<ul id="ul1"></ul>
+</body>
+</html>

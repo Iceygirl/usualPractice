@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+#parent { width:200px; height:200px; border:1px solid #999; position:relative; }
+#box1{ width:11px; height:11px; position:absolute; background:url("drag_ico.gif") no-repeat; right:0; bottom:0; cursor:nw-resize;}
+</style>
+<script>
+window.onload = function (){
+	drag('box1');
+	
+	function drag(id){
+		var oDiv = document.getElementById(id);
+		var oParent = document.getElementById('parent');
+		var disX=0, disY=0;
+		
+		oDiv.onmousedown = function (ev){
+			var oEvent = ev || event;
+			disX = oEvent.clientX - oDiv.offsetLeft;
+			disY = oEvent.clientY - oDiv.offsetTop;
+			
+			document.onmousemove = function (ev){
+				var oEvent = ev || event;
+				
+				oParent.style.width = oEvent.clientX - disX + + oDiv.offsetWidth +'px';
+				oParent.style.height = oEvent.clientY - disY + + oDiv.offsetHeight + 'px';
+				
+			}
+			
+			document.onmouseup = function (){
+				document.onmousemove = null;
+				document.onmouseup = null;
+				
+			}
+			
+			return false;
+		}
+	}
+};
+</script>
+</head>
+<body>
+<div id="parent">
+	<div id="box1"></div>
+</div>
+</body>
+</html>

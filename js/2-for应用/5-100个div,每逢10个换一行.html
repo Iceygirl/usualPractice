@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ div { width:30px; height:30px; background:#FC6; color:#C69; line-height:30px; text-align:center; position:absolute; top:0; left:0;}
+</style>
+<script>
+ window.onload = function (){
+	var aDiv = document.getElementsByTagName('div');
+	var str ='';
+	for(var i=0;i<100;i++){
+	 	str+='<div>'+i+'</div>';	
+	}
+	document.body.innerHTML = str;
+	
+	for(var i=0;i<100;i+=10){
+		for(var j=0;j<10;j++){
+			aDiv[i+j].style.left = 10+40*j+'px';
+			aDiv[i+j].style.top = 10+i*4+'px';
+		}
+	}
+ };
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta  charset="utf-8"/>
+		<title>inline-block</title>
+		<style>
+			body,h1,h2,h3,h4,h5,h6,p,dl,dd
+			{
+				margin:0;
+				font-size:12px;
+			}
+			ol,ul
+			{
+				margin:0;
+				padding:0;
+				list-style:none;
+			}
+			a 
+			{
+				text-decoration:none;
+			}
+			img
+			{
+				boder:none;
+			}
+			span,div
+			{
+				/*width:120px;*/
+				height:120px;
+				background:red;
+				display:inline-block;
+			}
+			/*
+			inline-block的特点：
+			1.所有的标签在一行中显示
+			2.行内元素支持宽高
+			3.没有宽度的时候，内容撑开宽度
+			
+			问题：
+			1.ie6,ie7不支持块标签的inline-block;
+			2.代码换行被解析
+			*/
+		</style>
+	</head>
+	<body>
+		<span>区别样式
+	     aaa</span>
+		<span>区别样式</span>
+		<span>区别样式</span>
+		<div>块</div>
+		<div>块</div>
+		<div>块</div>
+	</body>
+</html>

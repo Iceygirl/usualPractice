@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+ul { width:510px; position:relative; margin:10px auto;} 
+ul li { list-style:none; width:150px; height:150px; margin:10px; float:left;}
+ul .active { border:3px solid yellow;}
+img { width:150px; height:150px;}
+</style>
+<script src="zmx-prefect.js"></script>
+<script>
+window.onload = function (){
+	var aLi = document.getElementsByTagName('li');
+	var aPos = [];
+	var iMinIndex = 2;
+	
+	//布局变换
+	for(var i=0;i<aLi.length;i++){
+		aPos[i] = { left:aLi[i].offsetLeft, top:aLi[i].offsetTop};
+	}
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.left = aPos[i].left + 'px';
+		aLi[i].style.top = aPos[i].top + 'px';
+		
+		aLi[i].style.position = 'absolute';
+		aLi[i].style.margin = '0';
+		aLi[i].index = i;
+	}
+	
+	//拖拽
+	for(var i=0;i<aLi.length;i++){
+		drag(aLi[i]);
+	}
+	
+	function drag(obj){
+		obj.onmousedown = function (ev){
+			var oEvent = ev || event;
+			var disX = oEvent.clientX - obj.offsetLeft;
+			var disY = oEvent.clientY - obj.offsetTop;
+			
+			document.onmousemove = function (ev){
+				var oEvent = ev || event;
+				obj.style.left = oEvent.clientX - disX + 'px';
+				obj.style.top = oEvent.clientY - disY + 'px';
+				obj.style.zIndex = iMinIndex++;
+				
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].className = '';
+				}
+				
+				var oNear = findNearest(obj);
+				if(oNear){
+					oNear.className = 'active';
+				}
+			};
+			
+			document.onmouseup = function (){
+				document.onmousemove = null;
+				document.onmouseup = null;
+				
+				var oNear = findNearest(obj);
+				
+				if(oNear){
+					oNear.className = '';
+					
+					startMove(oNear,aPos[obj.index]);
+					startMove(obj,aPos[oNear.index]);
+					
+					var tmp = 0;
+					tmp = obj.index;
+					obj.index = oNear.index;
+					oNear.index = tmp;
+					
+				} else {
+					startMove(obj,aPos[obj.index]);	
+				}
+				
+			};
+			clearInterval(obj.timer);
+			return false;
+		};
+	}
+	
+	function getDis(obj1,obj2){
+		var x = obj1.offsetLeft - obj2.offsetLeft;
+		var y = obj1.offsetTop - obj2.offsetTop;
+		
+		return Math.sqrt(x*x+y*y);
+	}
+	
+	//碰撞后并找出距离最近的一个
+	function findNearest(obj){
+		var iMin = 9999;
+		var iMinIndex = -1;
+		
+		for(var i =0;i<aLi.length;i++){
+			if(obj == aLi[i]) continue;
+			
+			if(pzTest(obj,aLi[i])){
+				var dis = getDis(obj,aLi[i]);
+				
+				if(iMin>dis){
+					iMin = dis;
+					iMinIndex = i;
+				}
+			}
+		}
+		if(iMinIndex == -1){
+			return null;
+		} else {
+			return aLi[iMinIndex];
+		}
+	}
+	
+	//检测碰撞
+	function pzTest(obj1,obj2){
+		var l1 = obj1.offsetLeft;
+		var r1 = obj1.offsetLeft + obj1.offsetWidth;
+		var t1 = obj1.offsetTop;
+		var b1 = obj1.offsetTop + obj1.offsetHeight;
+		
+		var l2 = obj2.offsetLeft;
+		var r2 = obj2.offsetLeft + obj2.offsetWidth;
+		var t2 = obj2.offsetTop;
+		var b2 = obj2.offsetTop + obj2.offsetHeight;
+		
+		if(l2>r1 || r2<l1 || t2>b1 || b2<t1 ){
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+};
+</script>
+</head>
+<body>
+<ul>
+	<li><img src="imgs/1.jpg"/></li>
+	<li><img src="imgs/2.jpg"/></li>
+	<li><img src="imgs/3.jpg"/></li>
+	<li><img src="imgs/4.jpg"/></li>
+	<li><img src="imgs/5.jpg"/></li>
+	<li><img src="imgs/6.jpg"/></li>
+	<li><img src="imgs/7.jpg"/></li>
+	<li><img src="imgs/8.jpg"/></li>
+	<li><img src="imgs/9.jpg"/></li>
+</ul>
+</body>
+</html>

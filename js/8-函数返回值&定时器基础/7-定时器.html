@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	/*for(var i=0;i<10;i++){
+		document.title = i;			//瞬间完成，没有时间概念
+	}*/
+	
+	var i=0;
+	var timer = null;
+	function fnTitle(){
+		i++;
+		document.title = i;
+		
+		if(i==10){
+			clearInterval(timer);	
+		}
+	};
+	timer = setInterval( fnTitle, 200 );
+	/*
+		定时器：时间概念
+		var timer = setInterval( 函数, 毫秒 );	重复执行（发动机）
+		clearInterval( timer );					清除定时器										
+		
+		var timer = setTimeout( 函数, 毫秒 );		只执行一次（炸弹）
+		clearTimeout( timer );
+		
+		函数的调用：
+		1.直接调用：fnTitle();
+		2.事件调用：btn.onclick = fnTitle;
+	*/
+</script>
+</head>
+
+<body>
+</body>
+</html>

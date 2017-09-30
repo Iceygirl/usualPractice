@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	$('div').click(function (){
+		//alert(this.innerHTML);
+		//alert($(this).html());
+		
+		alert(this.html());	//错误写法
+		alert($(this).innerHTML); //错误写法
+	}); 
+ });
+ 
+ //JQ与JS的关系：可以共存，但不能混用
+</script>
+</head>
+
+<body>
+<div class="box">111</div>
+</body>
+</html>

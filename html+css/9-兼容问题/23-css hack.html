@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>css hack</title>
+		<style>
+			.box{width:200px;height:200px;background:red;background:blue\9;
+			*background:green;_background:pink;}
+			@media screen and (-webkit-min-device-pixel-ratio:0){.box{background:pink}}
+			/*
+			css hack:
+			\9 :ie10以前包括ie10的浏览器解析
+			+,*:ie7以前包括ie7的浏览器解析
+			_:ie6以前包括ie6的浏览器解析
+			@media screen and (-webkit-min-device-pixel-ratio:0){.box{background:pink}}:谷歌浏览器解析
+			
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

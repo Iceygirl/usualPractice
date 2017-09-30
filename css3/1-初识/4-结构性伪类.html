@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ p{ width:100px; height:20px; border:1px solid #000;}
+ h1{ width:100px; height:30px; font-size:16px; border:1px solid #000;}
+ 
+ p:nth-child(1){ background:#F90;}  /*p标签父元素的第一个元素，还得是p标签*/
+ p:nth-child(odd){ background:#FC3;} /*p标签父元素的奇数行元素*/
+ p:nth-child(even){ background:#66C;} /*p标签父元素的偶数行元素*/
+ p:nth-child(3n){ background:#CC3;}   /*p标签父元素的3n元素*/
+ 
+ body *:nth-child(3){ background:#0C3;}
+ 
+ p:nth-last-child(1){ background:#F03;}  /*last从后面计算*/
+ 
+ h1:nth-of-type(2){ background:#C99;}  /*h1标签父元素的第二个h1标签*/
+ p:nth-last-of-type(1){ background:#909;}  
+ p:empty{ background:#0CF;}    		/*empty中没有子节点,子节点包含文本节点*/
+ 
+ 
+ 
+/* 
+:first-child==:nth-child(1)
+:last-child==:nth-last-child(1)
+:first-of-type==nth-of-type(1)
+:last-of-type==nth-last-of-type(1)
+
+only-child元素中只有一个子节点。注意：子节点不包含文本节点
+only-of-type 表示E的父元素中只有一个子节点，且这个唯一的子节点的类型必须是E。注意：子节点不包含文本节点
+
+
+浏览器支持情况：ie9及以上，
+*/
+</style>
+</head>
+
+<body>
+<p>11</p>
+<p>22</p>
+<h1>aa</h1>
+<p>33</p>
+<p>44</p>
+<h1>bb</h1>
+<p>55</p>
+<p>66</p>
+<p>77</p>
+<p>88</p>
+<p>99</p>
+<p></p>
+</body>
+</html>

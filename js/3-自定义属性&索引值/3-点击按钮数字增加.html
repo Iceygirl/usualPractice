@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var aBtn = document.getElementsByTagName('input'); 
+	var arr = [1,2,3,4,5,6,7,8];
+	for(var i=0;i<aBtn.length;i++){
+		aBtn[i].index = 0;
+		
+		aBtn[i].onclick = function (){
+			this.value = arr[this.index%arr.length];
+			this.index++;
+		};
+	}
+ };
+</script>
+</head>
+
+<body>
+<p>点击任意一个按钮，数字会增加</p>
+<input type="button" value="0" />
+<input type="button" value="0" />
+<input type="button" value="0" />
+</body>
+</html>

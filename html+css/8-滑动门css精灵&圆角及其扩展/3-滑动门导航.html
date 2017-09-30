@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>滑动门导航</title>
+		<style>
+			body,ul{margin:0;padding:0;}
+			li{list-style:none;}
+			a{text-decoration:none;}
+			body{background:#23232f;padding:50px;}
+			.nav{background:#0f0f14 url(img1/navL.png) no-repeat;float:left;}
+			.navR{background:url(img1/navR.png) no-repeat right 0;float:left;padding:4px 4px 0 3px;}
+			.navR li{padding-left:1px;float:left;}
+			.navR a{background:url(img1/aL.png) no-repeat;float:left;}
+			.navR span{background:url(img1/aR.png) no-repeat right 0;float:left;height:31px;font-size:14px;line-height:30px;
+						color:white;padding:0 18px;}
+			.navR a:hover,.navR .active{background-image:url(img1/hoverL.png);}
+			.navR a:hover span,.navR .active span{background-image:url(img1/hoverR.png);}
+			
+			/*
+			滑动门不是一项新技术，它是利用背景的可层叠性，并允许他们在彼此之上进行滑动，
+			来创造一些特殊的效果
+			
+			内容由宽度撑开：
+			display:inline;   ----不支持宽高
+			display:inline-block;  ---不支持ie6,7下的块元素
+			float:left;
+			position:absolute;   ----还需要定位坐标
+			position:fixed;		---ie6,7下不支持
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul class="navR">
+				<li>
+					<a href="3-滑动门导航.html"  class="active">
+						<span>周小曼</span>
+					</a>
+				</li>
+				<li>
+					<a href="3-滑动门导航 - 副本.html">
+						<span>前端</span>
+					</a>
+				</li>
+				<li>
+					<a href="3-滑动门导航 - 副本 (2).html">
+						<span>关于我们</span>
+					</a>
+				</li>
+				<li>
+					<a href="3-滑动门导航 - 副本 (3).html">
+						<span>加入我们</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

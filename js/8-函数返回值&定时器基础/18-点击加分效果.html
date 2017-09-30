@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1 { width:500px; height:50px; border:1px solid #333; margin:200px auto 0; position:relative; }
+#div1 span { width:50px; height:50px; position:absolute; top:0; left:0; font-size:30px; text-align:center; line-height:50px; z-index:2; opacity:1; }
+#div1 p { margin:0; width:0; height:50px; background:#399; position:absolute; bottom:0; left:0; z-index:1; opacity:0; }
+</style>
+</head>
+
+<body>
+
+<div id="div1">
+	<span>+1</span>
+	<span>+1</span>
+	<span>+1</span>
+	<span>+1</span>
+	<span>+1</span>
+	<span>+1</span>
+	<span>+1</span>
+	<span>+1</span>
+	<span>+1</span>
+	<span>+1</span>
+	<p></p>
+</div>
+
+<script src="miaov.js"></script>
+<script>
+
+var oDiv = document.getElementById('div1');
+var aSpan = document.getElementsByTagName('span');
+var oP = document.getElementsByTagName('p')[0];
+
+
+for (var i=0; i<aSpan.length; i++) {
+	aSpan[i].style.left = i*50 + 'px';
+}
+
+oDiv.onclick = function () {
+	
+	if ( this.onOff ) return;
+	this.onOff = true;
+	
+	var n = 0;
+	var num = 0;
+	
+	var timer = setInterval(function() {
+		
+		opacity(aSpan[num], 8, 0);
+		doMove(aSpan[num], 14, 'top', -160, function() {
+			n++;
+			if (n == aSpan.length) {
+				
+				for (var i=0; i<aSpan.length; i++) {
+					aSpan[i].style.top = 0;
+					opacity(aSpan[i], 8, 100);
+				}
+			}
+		});
+		
+		opacity(oP, 12, 100, function() {
+			opacity(oP, 5, 0, function() {
+				oP.style.width = 0;
+				
+				oDiv.onOff = false;
+			});
+		});
+		doMove(oP, 32, 'width', 500);
+
+		num++;
+		if (num == aSpan.length) {
+			clearInterval(timer);
+		}
+	}, 50);
+};
+</script>
+
+</body>
+</html>

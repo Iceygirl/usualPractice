@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,ul { margin:0; padding:0;}
+ li { list-style:none;}
+ a { text-decoration:none; color:#fff;}
+ img { border:none; vertical-align:top;}
+ 
+ body { background:#000;}
+ .clear { zoom:1;}
+ .clear:after { content:''; display:block; clear:both;}
+ .wrap { width:958px; margin:100px auto; background:#666;}
+ .left { width:148px; float:left;}
+ .left li { height:80px; line-height:80px; text-align:center; border-bottom:1px solid #fff;}
+ .left .hover { background:#CC6;}
+
+ .right { width:810px; float:right; position:relative;}
+ .right img { width:810px; height:330px;}
+ .right ul { position:absolute; left:0; bottom:0; display:none;}
+ .right ul li { float:left; background:#999; }
+ .right a { display:block; height:30px; line-height:30px; text-align:center;  margin-right:1px; font-size:14px;}
+ .list1 li { width:269px;}
+ .list2 li { width:201px;}
+ .list3 li { width:161px;} 
+ .right .active { background:#C96;}
+</style>
+<script>
+  window.onload = function (){
+	var oDiv = document.getElementsByTagName('div')[0];
+	var oUl = oDiv.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	var oDivR = oDiv.getElementsByTagName('div')[0];
+	var aUl = oDivR.getElementsByTagName('ul');
+	var oImg = oDivR.getElementsByTagName('img')[0];
+	var num = 0;
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index = i;
+		
+		aLi[i].onmouseover = function (){
+			for(var i=0;i<aLi.length;i++){
+				if(i!= this.index){
+					aLi[i].className = '';
+					aUl[i].style.display = 'none';
+				}
+			}
+			this.className = 'hover';
+			aUl[this.index].style.display = 'block';
+			num = this.index;
+			oImg.src = 'img4/'+(num+1)+'-1.jpg';
+		}
+		
+	}
+	
+	for(var i=0;i<aUl.length;i++){
+		fnOperate(aUl[i]);
+	}
+	
+	function fnOperate(obj){
+		var aLi = obj.getElementsByTagName('li');
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].index = i;
+			
+			aLi[i].onmouseover = function (){
+				for(var i =0; i<aLi.length;i++){
+					if(aLi[i]!=this){
+						aLi[i].className = '';
+					}	
+				}
+				this.className = 'active';
+				oImg.src = 'img4/'+(num+1)+'-'+(this.index+1)+'.jpg';
+			};
+		}
+	}
+  };
+</script>
+</head>
+
+<body>
+<div class="wrap clear">
+	<ul class="left">
+    	<li class="hover"><a href="#">最新团购</a></li>
+        <li><a href="#">商城特惠</a></li>
+        <li><a href="#">名品推荐</a></li>
+        <li><a href="#">缤纷活动</a></li>
+    </ul>
+    <div class="right">
+    	<img src="img4/4-2.jpg" /> alt="1-1"/>
+        <ul class="list1" style="display:block;">
+        	<li class="active"><a href="#">雅诗兰黛完美修护唇膏(蓝色花纹管管体)</a></li>
+            <li><a href="#">雅诗兰黛花样唇膏</a></li>  
+            <li><a href="#">倩碧卓越润肤乳</a></li>  
+        </ul>
+        <ul class="list2">
+        	<li class="active"><a href="#">肌研满150减30</a></li>  
+            <li><a href="#">高性价比低单价商品2.8折起</a></li>  
+            <li><a href="#">贝德玛满228送128</a></li>  
+            <li><a href="#">吃出健康美态2.8折起</a></li>
+        </ul>
+        <ul class="list3">
+         	<li class="active"><a href="#">艾格利克全场1.5折起</a></li>  
+            <li><a href="#">NO1dora全场1.4折起</a></li>  
+            <li><a href="#">伊米妮全场1折起</a></li>  
+            <li><a href="#">小熊电器全场1折起</a></li>  
+            <li><a href="#">贝缇卡全场1折起</a></li> 
+        </ul>
+        <ul class="list2">
+        	<li class="active"><a href="#">万达歌星2小时欢唱券</a></li>  
+            <li><a href="#">Free派-高丝娜蔻眼霜</a></li>  
+            <li><a href="#">财付通下单立减 还抽单反</a></li>  
+            <li><a href="#">Free派-芙优润天蚕丝面膜</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

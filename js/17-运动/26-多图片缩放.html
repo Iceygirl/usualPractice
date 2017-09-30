@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ body,ul { margin:0; padding:0;}
+ li { list-style:none;}
+ img { border:none;}
+ ul { width:360px; height:360px; border:10px solid #ccc; margin:50px auto;}
+ ul li { width:100px; height:100px; margin:10px; float:left; cursor:pointer; top:0; left:0; z-index:1;}
+ img { width:100px; height:100px;}
+</style>
+<script src="zmx-prefect.js"></script>
+<script>
+ window.onload = function (){
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	var iMinZindex = 2;
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.top = aLi[i].offsetTop+'px';
+		aLi[i].style.left = aLi[i].offsetLeft+'px';	
+	}
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.position ='absolute';	
+		aLi[i].style.margin = '0';
+	}
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].onmouseover = function (){
+			
+			this.style.zIndex = iMinZindex++;
+			var oImg = this.getElementsByTagName('img')[0];
+			
+			startMove(this,{ width:150, height:150, marginLeft:-25, marginTop:-25});
+			startMove(oImg,{ width:200, height:200});
+		};
+		
+		aLi[i].onmouseout = function (){
+			
+			var oImg = this.getElementsByTagName('img')[0];
+			
+			startMove(this,{ width:100, height:100, marginLeft:0, marginTop:0});
+			startMove(oImg,{ width:100, height:100});
+		};
+	}
+ };
+</script>
+</head>
+
+<body>
+<ul>
+	<li><img src="images/1.jpg" /></li>
+	<li><img src="images/2.jpg" /></li>
+	<li><img src="images/3.jpg" /></li>
+	<li><img src="images/4.jpg" /></li>
+	<li><img src="images/5.jpg" /></li>
+	<li><img src="images/6.jpg" /></li>
+	<li><img src="images/7.gif" /></li>
+	<li><img src="images/8.gif" /></li>
+	<li><img src="images/9.gif" /></li>
+</ul>
+</body>
+</html>

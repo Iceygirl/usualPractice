@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+ $(function (){
+	//$('div').insertBefore($('span')); 
+	//$('div').insertAfter($('span'));
+	
+	
+	//$('div').appendTo($('span'));  //appendTo:appendChild，在后面增加节点
+	//$('div').prependTo($('span'));   //在最前面增加节点
+	
+	
+	$('span').insertBefore($('div')).css('background','red');
+	$('div').before($('span')).css('background','blue');
+	//这两者的区别是后续的操作不同
+	
+	
+	/*insertBefore()  before()
+	insertAfter()   after()
+	appendTo()   append()
+	prependTo()   prepend()*/
+ });
+</script>
+</head>
+
+<body>
+<div>111</div>
+<span>222</span>
+</body>
+</html>

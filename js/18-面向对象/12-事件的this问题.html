@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+function Aaa(){
+	this.a = 12;
+	var _this = this;
+	document.getElementById('btn').onclick = function (){
+		_this.show();
+	};
+};
+
+Aaa.prototype.show = function (){
+	alert(this.a);
+};
+
+window.onload = function (){
+	var a = new Aaa();
+};
+
+// 再套一层，_this
+</script>
+</head>
+<body>
+<input id="btn" type="button" value="按钮"/>
+</body>
+</html>

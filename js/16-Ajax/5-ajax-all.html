@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload = function (){
+	var oBtn = document.getElementsByTagName('input')[0];
+	var oAjax = null;
+	
+	oBtn.onclick = function (){
+		if(window.XMLHttpRequest){
+		  oAjax = new XMLHttpRequest();  	//ie6及以上版本
+		} else{
+		  oAjax =new ActiveXObject('Microsoft.XMLHTTP');   //ie6
+		}
+		
+		oAjax.open('GET','abc.txt',true);
+		
+		oAjax.send();
+		
+		oAjax.onreadystatechange = function (){
+			if(oAjax.readystate==4){
+			  if(oAjax.status==200){
+				alert('成功:'+oAjax.responseText);  
+			  } else{
+				alert('失败');  
+			  }
+			}
+		};
+		
+		
+	};
+ };
+ 
+/* ajax读取服务器文件：
+ 1.创建ajax对象
+ 2.建立与服务器的链接:open(方法, url, 是否异步)
+ 3.发送请求
+ 4.接收返回
+ 
+ 同步和异步：
+ 同步：一件一件完成
+ 异步：几件事可以一起完成
+ */
+</script>
+</head>
+
+<body>
+<input type="button" value="读取文件" />
+</body>
+</html>
